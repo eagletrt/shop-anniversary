@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Product } from "@/lib/types";
+import type { GroupedProduct } from "@/lib/types";
 import type { CheckoutRequest } from "@/lib/types";
 import { useCartStore } from "@/lib/store";
 import {
@@ -21,11 +21,9 @@ interface ShopDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   view: DrawerState;
-  product?: Product | null;
+  product?: GroupedProduct | null;
   setView: (view: DrawerState) => void;
 }
-
-const DEFAULT_SIZES = ["S", "M", "L", "XL", "XXL"];
 
 export function ShopDrawer({
   isOpen,
@@ -43,30 +41,44 @@ export function ShopDrawer({
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const hasSizes = product ? !!product.taglia : false;
-  const sizes = product?.taglia
-    ? product.taglia.split(",").map((s) => s.trim())
-    : DEFAULT_SIZES;
+  // Whether this product has size variants
+  const hasSizes = product ? product.variants.length > 0 : false;
 
   // Images are already sanitized server-side as string[]
   const images = product?.images ?? [];
   const imageNeutral = images[0] || "/placeholder-neutral.jpg";
 
   const handleAddToCart = () => {
-    if (product) {
-      if (hasSizes && !selectedSize) return;
+    if (!product) return;
 
+    if (hasSizes) {
+      if (!selectedSize) return;
+
+      // Find the variant that matches the selected size to get the real DB item id
+      const variant = product.variants.find((v) => v.taglia === selectedSize);
+      if (!variant) return;
+
+      addItem({
+        id: Math.random().toString(36).substring(7),
+        productId: variant.itemId, // the specific DB row for this size
+        name: product.nome,
+        price: product.price,
+        quantity: 1,
+        size: selectedSize,
+      });
+    } else {
+      // No sizes — use the product's representative id
       addItem({
         id: Math.random().toString(36).substring(7),
         productId: product.id,
         name: product.nome,
         price: product.price,
         quantity: 1,
-        size: hasSizes ? selectedSize : undefined,
       });
-      setSelectedSize("");
-      setView("cart");
     }
+
+    setSelectedSize("");
+    setView("cart");
   };
 
   const handleCheckout = async (e: React.FormEvent) => {
@@ -125,6 +137,12 @@ export function ShopDrawer({
                 />
               </div>
 
+              {product.description && (
+                <p className="text-sm leading-relaxed text-zinc-400">
+                  {product.description}
+                </p>
+              )}
+
               <div className="font-mono text-xl font-bold text-[#f3ff14]">
                 €{product.price.toFixed(2)}
               </div>
@@ -135,17 +153,17 @@ export function ShopDrawer({
                     Seleziona Taglia
                   </label>
                   <div className="flex flex-wrap gap-2">
-                    {sizes.map((s) => (
+                    {product.variants.map((v) => (
                       <button
-                        key={s}
-                        onClick={() => setSelectedSize(s)}
-                        className={`flex h-12 w-12 items-center justify-center border font-mono transition-colors ${
-                          selectedSize === s
+                        key={v.taglia}
+                        onClick={() => setSelectedSize(v.taglia)}
+                        className={`flex h-12 min-w-12 items-center justify-center border px-2 font-mono transition-colors ${
+                          selectedSize === v.taglia
                             ? "border-[#f3ff14] bg-[#f3ff14] font-bold text-black"
                             : "border-zinc-700 text-white hover:border-white"
                         }`}
                       >
-                        {s}
+                        {v.taglia}
                       </button>
                     ))}
                   </div>

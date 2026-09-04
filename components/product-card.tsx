@@ -2,12 +2,12 @@
 "use client";
 
 import { useState } from "react";
-import type { Product } from "@/lib/types";
+import type { GroupedProduct } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 
 interface ProductCardProps {
-  product: Product;
-  onSelect: (product: Product) => void;
+  product: GroupedProduct;
+  onSelect: (product: GroupedProduct) => void;
 }
 
 export function ProductCard({ product, onSelect }: ProductCardProps) {

@@ -1,20 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import type { Product } from "@/lib/types";
+import type { GroupedProduct } from "@/lib/types";
 import { ProductCard } from "@/components/product-card";
 import { ShopDrawer } from "@/components/shop-drawer";
 import { useCartStore } from "@/lib/store";
 
-export function ShopClient({ products }: { products: Product[] }) {
+export function ShopClient({ products }: { products: GroupedProduct[] }) {
   const isDrawerOpen = useCartStore((state) => state.isDrawerOpen);
   const setDrawerOpen = useCartStore((state) => state.setDrawerOpen);
   const drawerView = useCartStore((state) => state.drawerView);
   const setDrawerView = useCartStore((state) => state.setDrawerView);
 
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProduct, setSelectedProduct] =
+    useState<GroupedProduct | null>(null);
 
-  const handleProductSelect = (product: Product) => {
+  const handleProductSelect = (product: GroupedProduct) => {
     setSelectedProduct(product);
     setDrawerView("product");
     setDrawerOpen(true);
@@ -28,8 +29,9 @@ export function ShopClient({ products }: { products: Product[] }) {
             Official <span className="text-primary">Equipment</span>
           </h1>
           <p className="mx-auto max-w-2xl font-mono text-sm text-muted-foreground md:text-base">
-            Equipaggiamento ufficiale E-AGLE Trento Racing Team. Qualità
-            ingegneristica e stile per veri appassionati.
+            Equipaggiamento ufficiale E-AGLE Trento Racing Team
+            <br />
+            Qualità ingegneristica e stile per veri appassionati
           </p>
         </div>
 
