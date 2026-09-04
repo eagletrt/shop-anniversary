@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+      "esbenp.prettier-vscode",
+      "bradlc.vscode-tailwindcss",
+      "Gruntfuggly.todo-tree",
+      "wayou.vscode-todo-highlight",
+      "dbaeumer.vscode-eslint",
+      "dsznajder.es7-react-js-snippets",
+      "streetsidesoftware.code-spell-checker",
+      "aaron-bond.better-comments",
+  ]
+}

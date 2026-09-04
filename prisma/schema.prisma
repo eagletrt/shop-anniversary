@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Item {
+  id          String      @id @default(uuid())
+  nome        String
+  taglia      String?
+  tenYears    Boolean     @default(false)
+  price       Float
+  images      Json?       // Array JSON per le immagini
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id              String      @id @default(uuid())
+  nomeCognome     String
+  email           String
+  paid            Boolean     @default(false)
+  delivered       Boolean     @default(false)
+  shipping        String      // es. RITIRO_EVENTO, SPEDIZIONE
+  transactionType String?     // es. CONTANTI, PAYPAL, BONIFICO
+  notes           String?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  
+  orderItems      OrderItem[]
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  
+  itemId    String
+  item      Item    @relation(fields: [itemId], references: [id])
+  
+  qty       Int     @default(1)
+}
