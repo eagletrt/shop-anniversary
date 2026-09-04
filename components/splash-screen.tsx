@@ -1,10 +1,11 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
-import Logo_dark from '@/public/logo_dark.svg';
-import Logo_light from '@/public/logo_light.svg';
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import Logo_dark from "@/public/logo_dark.svg";
+import Logo_light from "@/public/logo_light.svg";
 
 interface SplashScreenProps {
   minimumLoadTimeMs?: number;
@@ -12,45 +13,6 @@ interface SplashScreenProps {
   onComplete?: () => void;
   logoSize?: number;
 }
-
-const styles = `
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  @keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-  }
-  
-  @keyframes scaleIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-  
-  @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--primary) 0%, transparent); }
-    50% { box-shadow: 0 0 0 10px color-mix(in oklch, var(--primary) 10%, transparent); }
-    100% { box-shadow: 0 0 0 20px color-mix(in oklch, var(--primary) 0%, transparent); }
-  }
-  
-  .splash-screen-exit {
-    animation: fadeOut 0.5s ease-in-out forwards;
-  }
-  
-  .splash-screen-enter {
-    animation: fadeIn 0.5s ease-in-out forwards;
-  }
-  
-  .logo-container {
-    animation: scaleIn 0.5s ease-out forwards;
-  }
-  
-  .logo-pulse {
-    animation: pulse 1.5s ease-in-out 0.5s infinite;
-  }
-`;
 
 export default function SplashScreen({
   minimumLoadTimeMs = 2500,
@@ -67,11 +29,11 @@ export default function SplashScreen({
     setMounted(true);
 
     // Ensure the splash screen is visible immediately and prevent scrolling
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
 
     return () => {
       // Clean up when unmounted
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, []);
 
@@ -79,7 +41,7 @@ export default function SplashScreen({
     const timer = setTimeout(() => {
       setIsVisible(false);
       setTimeout(() => {
-        document.body.style.overflow = '';
+        document.body.style.overflow = "";
         onComplete?.();
       }, finishDelay);
     }, minimumLoadTimeMs);
@@ -91,46 +53,80 @@ export default function SplashScreen({
   if (!mounted) {
     // Return a placeholder with the same dimensions to prevent layout shift
     return (
-      <div className="bg-background fixed inset-0 z-[9999] flex items-center justify-center">
+      <div className="fixed inset-0 z-9999 flex items-center justify-center bg-background">
         <div style={{ width: logoSize, height: logoSize }}></div>
       </div>
     );
   }
 
   return (
-    <>
-      <style>{styles}</style>
+    <AnimatePresence>
       {isVisible && (
-        <div
-          className={`bg-background fixed inset-0 z-[9999] flex items-center justify-center ${
-            !isVisible ? 'splash-screen-exit' : 'splash-screen-enter'
-          }`}
+        <motion.div
+          className="fixed inset-0 z-9999 flex items-center justify-center bg-background"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          <div className="logo-container">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.2 }}
+            transition={{ duration: 0.5 }}
+          >
             <LogoAnimation size={logoSize} />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       )}
-    </>
+    </AnimatePresence>
   );
 }
 
 function LogoAnimation({ size = 120 }: { size?: number }) {
   const { theme, resolvedTheme } = useTheme();
 
-  const currentTheme = theme === 'system' ? resolvedTheme : theme;
+  const currentTheme = theme === "system" ? resolvedTheme : theme;
 
   // Use the appropriate logo based on the theme
-  const logoSrc = currentTheme === 'dark' ? Logo_dark : Logo_light;
+  const logoSrc = currentTheme === "dark" ? Logo_dark : Logo_light;
 
   return (
-    <div className="relative flex items-center justify-center" style={{ width: size, height: size }}>
-      <div style={{ animation: 'fadeIn 0.5s ease-out', width: '100%', height: '100%', position: 'relative' }}>
-        <Image src={logoSrc} alt="Logo" fill className="object-contain" priority />
-      </div>
+    <div className="relative" style={{ width: size, height: size }}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        key={logoSrc} // Add key to force re-render when logo changes
+      >
+        <Image
+          src={logoSrc}
+          alt="Logo"
+          width={size}
+          height={size}
+          className="object-contain"
+          priority
+        />
+      </motion.div>
 
       {/* Pulsing effect using theme colors */}
-      <div className="absolute inset-0 rounded-full logo-pulse" />
+      <motion.div
+        className="absolute inset-0 rounded-full"
+        initial={{ boxShadow: "0 0 0 0 hsla(var(--primary), 0)" }}
+        animate={{
+          boxShadow: [
+            "0 0 0 0 hsla(var(--primary), 0)",
+            "0 0 0 10px hsla(var(--primary), 0.1)",
+            "0 0 0 20px hsla(var(--primary), 0)",
+          ],
+        }}
+        transition={{
+          duration: 1.5,
+          repeat: Number.POSITIVE_INFINITY,
+          repeatType: "loop",
+          times: [0, 0.5, 1],
+          delay: 0.5,
+        }}
+      />
     </div>
   );
 }

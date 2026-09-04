@@ -14,25 +14,23 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   // Parse images if needed
-  const images = Array.isArray(product.images) ? product.images as string[] : [];
+  const images = Array.isArray(product.images)
+    ? (product.images as string[])
+    : [];
   const imageNeutral = images[0] || "/placeholder-neutral.jpg";
   const imageLifestyle = images[1] || imageNeutral;
 
   return (
     <div
-      className="group relative flex aspect-[3/4] w-full cursor-pointer flex-col gap-4 sm:aspect-auto sm:h-[600px]"
+      className="group relative flex aspect-3/4 w-full cursor-pointer flex-col gap-4 sm:aspect-auto sm:h-150"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={() => setIsHovered(!isHovered)}
       onClick={() => onSelect(product)}
     >
-      <div className="relative w-full flex-grow overflow-hidden rounded-lg bg-zinc-900">
+      <div className="relative w-full grow overflow-hidden rounded-lg bg-muted">
         <img
-          src={
-            isHovered
-              ? imageLifestyle
-              : imageNeutral
-          }
+          src={isHovered ? imageLifestyle : imageNeutral}
           alt={product.nome}
           className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300"
           style={{ opacity: isHovered ? 1 : 0.9 }}
@@ -45,10 +43,10 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center pb-4 text-center">
-        <h3 className="text-xl font-bold tracking-wide text-white italic">
+        <h3 className="text-xl font-bold tracking-wide text-foreground italic">
           {product.nome}
         </h3>
-        <p className="mt-1 font-mono text-lg font-semibold text-[#f3ff14]">
+        <p className="mt-1 font-mono text-lg font-semibold text-primary">
           €{product.price.toFixed(2)}
         </p>
       </div>

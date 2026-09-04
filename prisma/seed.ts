@@ -8,7 +8,7 @@ const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
-    const items = [
+  const items = [
     // =========================================================
     // 1. PRODOTTI EVENTO DEI 10 ANNI (Prezzo Pieno | tenYears: true)
     // =========================================================
@@ -75,17 +75,17 @@ async function main() {
       description: "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag",
       tenYears: true,
       images: ["/images/pro_pack.png"],
-      taglia: "M", 
+      taglia: "M",
     },
     {
       nome: "VIP Pack",
       price: 110.0,
-      description: "Include: Tutto (Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetini)",
+      description:
+        "Include: Tutto (Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetini)",
       tenYears: true,
       images: ["/images/vip_pack.png"],
-      taglia: "M", 
+      taglia: "M",
     },
-
 
     // =========================================================
     // 2. PRODOTTI MEMBRI POST-EVENTO (Scontati | tenYears: false)
@@ -153,16 +153,17 @@ async function main() {
       description: "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag",
       tenYears: false,
       images: ["/images/pro_pack.png"],
-      taglia: "M", 
+      taglia: "M",
     },
     {
       nome: "VIP Pack",
       price: 70.0,
-      description: "Include: Tutto (Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetini)",
+      description:
+        "Include: Tutto (Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetini)",
       tenYears: false,
       images: ["/images/vip_pack.png"],
-      taglia: "M", 
-    }
+      taglia: "M",
+    },
   ];
 
   console.log("Seeding items...");

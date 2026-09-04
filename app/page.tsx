@@ -1,10 +1,12 @@
 import prisma from "@/lib/prisma";
 import { ShopClient } from "@/components/shop-client";
 
+import { Item } from "@prisma/client";
+
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
-  let products: any[] = [];
+  let products: Item[] = [];
 
   try {
     products = await prisma.item.findMany({

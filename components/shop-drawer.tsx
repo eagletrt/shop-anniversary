@@ -43,9 +43,14 @@ export function ShopDrawer({
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const hasSizes = product ? !!product.taglia : false;
-  const sizes = product?.taglia ? product.taglia.split(",").map(s => s.trim()) : DEFAULT_SIZES;
-  
-  const images = product && Array.isArray(product.images) ? product.images as string[] : [];
+  const sizes = product?.taglia
+    ? product.taglia.split(",").map((s) => s.trim())
+    : DEFAULT_SIZES;
+
+  const images =
+    product && Array.isArray(product.images)
+      ? (product.images as string[])
+      : [];
   const imageNeutral = images[0] || "/placeholder-neutral.jpg";
 
   const handleAddToCart = () => {

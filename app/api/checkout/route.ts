@@ -20,10 +20,7 @@ export async function POST(req: Request) {
         shipping: "RITIRO_EVENTO", // Default since it's required
         orderItems: {
           create: items.map(
-            (item: {
-              productId: string;
-              quantity: number;
-            }) => ({
+            (item: { productId: string; quantity: number }) => ({
               itemId: item.productId,
               qty: item.quantity,
             })

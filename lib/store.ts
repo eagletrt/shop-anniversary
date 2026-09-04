@@ -11,15 +11,23 @@ export type CartItem = {
 
 interface CartStore {
   items: CartItem[];
+  isDrawerOpen: boolean;
+  drawerView: "closed" | "product" | "cart" | "checkout";
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
   totalPrice: () => number;
+  setDrawerOpen: (isOpen: boolean) => void;
+  setDrawerView: (view: "closed" | "product" | "cart" | "checkout") => void;
 }
 
 export const useCartStore = create<CartStore>((set, get) => ({
   items: [],
+  isDrawerOpen: false,
+  drawerView: "closed",
+  setDrawerOpen: (isOpen) => set({ isDrawerOpen: isOpen }),
+  setDrawerView: (view) => set({ drawerView: view }),
   addItem: (item) =>
     set((state) => {
       const existingItem = state.items.find(
