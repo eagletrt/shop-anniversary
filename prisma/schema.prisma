@@ -10,6 +10,7 @@ model Item {
   id          String      @id @default(uuid())
   nome        String
   taglia      String?
+  description String?
   tenYears    Boolean     @default(false)
   price       Float
   images      Json?       // Array JSON per le immagini
