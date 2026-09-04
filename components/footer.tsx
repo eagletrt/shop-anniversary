@@ -1,20 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import Logo_dark from "@/public/logo_dark.svg";
-import Logo_light from "@/public/logo_light.svg";
 
 export function Footer() {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
-  }, []);
-
   return (
     <footer className="z-10 mt-auto rounded-t-4xl border-t border-muted-foreground bg-card px-4 py-6 sm:px-6 md:px-8 lg:px-12 xl:px-24">
       {/* Top row */}
@@ -76,7 +65,7 @@ export function Footer() {
             className="transition-opacity hover:opacity-80"
           >
             <Image
-              src={mounted && resolvedTheme === "dark" ? Logo_dark : Logo_light}
+              src={Logo_dark}
               alt="E-Agle TRT Logo"
               width={40}
               height={40}

@@ -1,5 +1,4 @@
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Navbar } from "@/components/navbar";
@@ -93,17 +92,15 @@ export default function RootLayout({
       className={`${inter.variable} scroll-smooth`}
     >
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <SplashScreenProvider>
-            <div className="flex min-h-screen flex-col bg-background">
-              <Navbar />
-              <main className="z-0 mb-4 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </SplashScreenProvider>
-        </ThemeProvider>
+        <SplashScreenProvider>
+          <div className="flex min-h-screen flex-col bg-background">
+            <Navbar />
+            <main className="z-0 mb-4 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </SplashScreenProvider>
       </body>
     </html>
   );

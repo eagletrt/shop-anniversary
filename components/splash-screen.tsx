@@ -2,10 +2,8 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import Logo_dark from "@/public/logo_dark.svg";
-import Logo_light from "@/public/logo_light.svg";
 
 interface SplashScreenProps {
   minimumLoadTimeMs?: number;
@@ -83,23 +81,15 @@ export default function SplashScreen({
 }
 
 function LogoAnimation({ size = 120 }: { size?: number }) {
-  const { theme, resolvedTheme } = useTheme();
-
-  const currentTheme = theme === "system" ? resolvedTheme : theme;
-
-  // Use the appropriate logo based on the theme
-  const logoSrc = currentTheme === "dark" ? Logo_dark : Logo_light;
-
   return (
     <div className="relative" style={{ width: size, height: size }}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        key={logoSrc} // Add key to force re-render when logo changes
       >
         <Image
-          src={logoSrc}
+          src={Logo_dark}
           alt="Logo"
           width={size}
           height={size}
