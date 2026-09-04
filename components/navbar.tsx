@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 import { useCartStore } from "@/lib/store";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 import Logo_dark from "@/public/logo_dark.svg";
 import Logo_light from "@/public/logo_light.svg";
 
@@ -46,7 +47,8 @@ export function Navbar() {
           Anniversary Shop
         </p>
       </Link>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center gap-2">
+        <ThemeToggle />
         <Button
           variant="ghost"
           size="icon"
