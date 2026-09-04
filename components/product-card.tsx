@@ -35,7 +35,7 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
         />
         {/* Overlay on hover */}
         <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <Button className="pointer-events-none bg-[#f3ff14] font-bold text-black uppercase hover:bg-white hover:text-black">
+          <Button className="pointer-events-none bg-primary font-bold text-primary-foreground uppercase hover:bg-white hover:text-black">
             Aggiungi
           </Button>
         </div>

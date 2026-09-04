@@ -38,6 +38,7 @@
     --color-card: var(--card);
     --color-foreground: var(--foreground);
     --color-background: var(--background);
+    --color-neon: #f3ff14;
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
     --radius-lg: var(--radius);
@@ -48,72 +49,79 @@
 }
 
 :root {
+    /* Modalità Chiara: Sfondo bianco (60%), Testi neri (30%), Dettagli e Prezzi in arancione chiaro/ambra accessibile su bianco (10%) */
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
+    --card: oklch(0.985 0 0);
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
     --primary: oklch(0.852 0.199 91.936);
-    --primary-foreground: oklch(0.421 0.095 57.708);
-    --secondary: oklch(0.967 0.001 286.375);
-    --secondary-foreground: oklch(0.21 0.006 285.885);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.145 0 0);
+    --secondary: oklch(0.95 0 0);
+    --secondary-foreground: oklch(0.145 0 0);
+    --muted: oklch(0.95 0 0);
+    --muted-foreground: oklch(0.45 0 0);
+    --accent: oklch(0.95 0 0);
+    --accent-foreground: oklch(0.145 0 0);
     --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.905 0.182 98.111);
-    --chart-2: oklch(0.795 0.184 86.047);
-    --chart-3: oklch(0.681 0.162 75.834);
-    --chart-4: oklch(0.554 0.135 66.442);
-    --chart-5: oklch(0.476 0.114 61.907);
+    --border: oklch(0.88 0 0);
+    --input: oklch(0.88 0 0);
+    --ring: oklch(0.64 0.18 58);
+    --chart-1: oklch(0.64 0.18 58);
+    --chart-2: oklch(0.55 0.16 65);
+    --chart-3: oklch(0.45 0.14 70);
+    --chart-4: oklch(0.35 0.10 75);
+    --chart-5: oklch(0.25 0.08 80);
     --radius: 0.625rem;
     --sidebar: oklch(0.985 0 0);
     --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.681 0.162 75.834);
-    --sidebar-primary-foreground: oklch(0.987 0.026 102.212);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+    --sidebar-primary: oklch(0.64 0.18 58);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.95 0 0);
+    --sidebar-accent-foreground: oklch(0.145 0 0);
+    --sidebar-border: oklch(0.88 0 0);
+    --sidebar-ring: oklch(0.64 0.18 58);
 }
 
 .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
+    /* Modalità Scura: Tonalità graduate di nero (per evitare il blocco unico), Dettagli e Prezzi in giallo #f3ff14 */
+    --background: oklch(0.09 0 0);          /* 1. Nero profondo di sfondo (canvas) */
+    --sidebar: oklch(0.13 0 0);             /* 2. Nero pannello laterale */
+    --card: oklch(0.16 0 0);                /* 3. Nero grafite elevato (header, footer, card) */
+    --popover: oklch(0.20 0 0);             /* 4. Nero modali, drawer e menu a tendina */
+    --input: oklch(0.21 0 0);               /* 5. Tonalità incassata per campi input */
+    --muted: oklch(0.24 0 0);               /* 6. Tonalità scura per incavi immagini prodotto */
+    --secondary: oklch(0.28 0 0);           /* 7. Grigio scuro per bottoni e pillole secondarie */
+
+    --foreground: oklch(0.985 0 0);         /* 30% Bianco puro per titoli e testi principali */
     --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
     --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.795 0.184 86.047);
-    --primary-foreground: oklch(0.421 0.095 57.708);
-    --secondary: oklch(0.274 0.006 286.033);
     --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.905 0.182 98.111);
+    --muted-foreground: oklch(0.70 0 0);    /* Grigio argento chiaro per descrizioni e sottotitoli */
+    --sidebar-foreground: oklch(0.985 0 0);
+
+    --border: oklch(1 0 0 / 14%);           /* Linee divisorie sottili e pulite con trasparenza */
+    --sidebar-border: oklch(1 0 0 / 10%);
+
+    /* 10% Accento: #f3ff14 (in Dark Mode risalta su nero per prezzi e dettagli) */
+    --primary: #f3ff14;
+    --primary-foreground: oklch(0.09 0 0);  /* Testo nero su giallo */
+    --accent: #f3ff14;
+    --accent-foreground: oklch(0.09 0 0);
+    --ring: #f3ff14;
+    --sidebar-primary: #f3ff14;
+    --sidebar-primary-foreground: oklch(0.09 0 0);
+    --sidebar-accent: #f3ff14;
+    --sidebar-accent-foreground: oklch(0.09 0 0);
+    --sidebar-ring: #f3ff14;
+    --chart-1: #f3ff14;
     --chart-2: oklch(0.795 0.184 86.047);
     --chart-3: oklch(0.681 0.162 75.834);
     --chart-4: oklch(0.554 0.135 66.442);
     --chart-5: oklch(0.476 0.114 61.907);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.795 0.184 86.047);
-    --sidebar-primary-foreground: oklch(0.987 0.026 102.212);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+
+    --destructive: oklch(0.704 0.191 22.216);
 }
 
 @layer base {

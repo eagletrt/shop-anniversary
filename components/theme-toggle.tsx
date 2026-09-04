@@ -1,12 +1,14 @@
 "use client";
 
-import { Monitor, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+
+const THEME_CYCLE = ["dark", "light"] as const;
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -14,26 +16,19 @@ export function ThemeToggle() {
     setMounted(true);
   }, []);
 
-  const themes = [
-    { name: "system", icon: <Monitor className="h-4 w-4" /> },
-    { name: "light", icon: <Sun className="h-4 w-4" /> },
-    { name: "dark", icon: <Moon className="h-4 w-4" /> },
-  ];
+  const cycleTheme = () => {
+    const nextTheme = resolvedTheme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+  };
+
+  const icon = mounted
+    ? { dark: <Moon className="h-6 w-6" />, light: <Sun className="h-6 w-6" /> }[resolvedTheme ?? "dark"]
+    : <Moon className="h-6 w-6" />;
 
   return (
-    <div className="relative flex h-6 items-center justify-evenly rounded-full bg-gray-100 p-1 dark:bg-gray-900">
-      {themes.map(({ name, icon }) => (
-        <button
-          key={name}
-          className={cn(
-            "flex h-5 w-6 items-center justify-center rounded-full transition-all duration-200",
-            mounted && theme === name && "bg-white dark:bg-gray-800"
-          )}
-          onClick={() => setTheme(name)}
-        >
-          {icon}
-        </button>
-      ))}
-    </div>
+    <Button variant="ghost" size="icon" onClick={cycleTheme}>
+      {icon}
+      <span className="sr-only">Cambia tema</span>
+    </Button>
   );
 }

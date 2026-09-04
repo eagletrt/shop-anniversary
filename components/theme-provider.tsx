@@ -7,6 +7,11 @@ function ThemeProvider({
   children,
   ...props
 }: ComponentProps<typeof NextThemesProvider>) {
+  useEffect(() => {
+    // Clear theme from localStorage on mount so it defaults to system every reload
+    localStorage.removeItem("theme");
+  }, []);
+
   return (
     <NextThemesProvider
       attribute="class"
