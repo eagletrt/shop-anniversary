@@ -4,7 +4,7 @@ import prisma from "@/lib/prisma";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { customerName, customerEmail, items, totalAmount } = body;
+    const { customerName, customerEmail, items } = body;
 
     if (!customerName || !customerEmail || !items || items.length === 0) {
       return NextResponse.json(
@@ -15,22 +15,17 @@ export async function POST(req: Request) {
 
     const order = await prisma.order.create({
       data: {
-        customerName,
-        customerEmail,
-        totalAmount,
-        status: "PENDING",
+        nomeCognome: customerName,
+        email: customerEmail,
+        shipping: "RITIRO_EVENTO", // Default since it's required
         orderItems: {
           create: items.map(
             (item: {
               productId: string;
-              size?: string;
               quantity: number;
-              priceAtTime: number;
             }) => ({
-              productId: item.productId,
-              size: item.size,
-              quantity: item.quantity,
-              priceAtTime: item.priceAtTime,
+              itemId: item.productId,
+              qty: item.quantity,
             })
           ),
         },

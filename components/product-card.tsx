@@ -2,16 +2,21 @@
 "use client";
 
 import { useState } from "react";
-import { Product } from "@prisma/client";
+import { Item } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 
 interface ProductCardProps {
-  product: Product;
-  onSelect: (product: Product) => void;
+  product: Item;
+  onSelect: (product: Item) => void;
 }
 
 export function ProductCard({ product, onSelect }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+
+  // Parse images if needed
+  const images = Array.isArray(product.images) ? product.images as string[] : [];
+  const imageNeutral = images[0] || "/placeholder-neutral.jpg";
+  const imageLifestyle = images[1] || imageNeutral;
 
   return (
     <div
@@ -22,14 +27,13 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
       onClick={() => onSelect(product)}
     >
       <div className="relative w-full flex-grow overflow-hidden rounded-lg bg-zinc-900">
-        {/* We use standard img tags here as placeholders. For production, next/image is better */}
         <img
           src={
             isHovered
-              ? product.imageLifestyle || product.imageNeutral
-              : product.imageNeutral
+              ? imageLifestyle
+              : imageNeutral
           }
-          alt={product.name}
+          alt={product.nome}
           className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300"
           style={{ opacity: isHovered ? 1 : 0.9 }}
         />
@@ -42,7 +46,7 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
       </div>
       <div className="flex flex-col items-center justify-center pb-4 text-center">
         <h3 className="text-xl font-bold tracking-wide text-white italic">
-          {product.name}
+          {product.nome}
         </h3>
         <p className="mt-1 font-mono text-lg font-semibold text-[#f3ff14]">
           €{product.price.toFixed(2)}

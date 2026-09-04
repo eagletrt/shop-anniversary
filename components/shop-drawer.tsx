@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { Product } from "@prisma/client";
+import { Item } from "@prisma/client";
 import { useCartStore } from "@/lib/store";
 import {
   Sheet,
@@ -20,11 +20,11 @@ interface ShopDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   view: DrawerState;
-  product?: Product | null;
+  product?: Item | null;
   setView: (view: DrawerState) => void;
 }
 
-const SIZES = ["S", "M", "L", "XL", "XXL"];
+const DEFAULT_SIZES = ["S", "M", "L", "XL", "XXL"];
 
 export function ShopDrawer({
   isOpen,
@@ -42,17 +42,23 @@ export function ShopDrawer({
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const hasSizes = product ? !!product.taglia : false;
+  const sizes = product?.taglia ? product.taglia.split(",").map(s => s.trim()) : DEFAULT_SIZES;
+  
+  const images = product && Array.isArray(product.images) ? product.images as string[] : [];
+  const imageNeutral = images[0] || "/placeholder-neutral.jpg";
+
   const handleAddToCart = () => {
     if (product) {
-      if (product.hasSizes && !selectedSize) return;
+      if (hasSizes && !selectedSize) return;
 
       addItem({
         id: Math.random().toString(36).substring(7),
         productId: product.id,
-        name: product.name,
+        name: product.nome,
         price: product.price,
         quantity: 1,
-        size: product.hasSizes ? selectedSize : undefined,
+        size: hasSizes ? selectedSize : undefined,
       });
       setSelectedSize("");
       setView("cart");
@@ -103,14 +109,14 @@ export function ShopDrawer({
           <>
             <SheetHeader className="border-b border-zinc-800 p-6">
               <SheetTitle className="text-2xl font-bold text-white italic">
-                {product.name}
+                {product.nome}
               </SheetTitle>
             </SheetHeader>
             <div className="flex flex-1 flex-col gap-6 overflow-y-auto p-6">
               <div className="relative aspect-square overflow-hidden rounded-lg bg-zinc-900">
                 <img
-                  src={product.imageNeutral}
-                  alt={product.name}
+                  src={imageNeutral}
+                  alt={product.nome}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
@@ -119,15 +125,13 @@ export function ShopDrawer({
                 €{product.price.toFixed(2)}
               </div>
 
-              <p className="text-zinc-400">{product.description}</p>
-
-              {product.hasSizes && (
+              {hasSizes && (
                 <div className="mt-4 flex flex-col gap-3">
                   <label className="text-sm font-semibold tracking-wider uppercase">
                     Seleziona Taglia
                   </label>
                   <div className="flex flex-wrap gap-2">
-                    {SIZES.map((s) => (
+                    {sizes.map((s) => (
                       <button
                         key={s}
                         onClick={() => setSelectedSize(s)}
@@ -147,7 +151,7 @@ export function ShopDrawer({
             <div className="border-t border-zinc-800 p-6">
               <Button
                 onClick={handleAddToCart}
-                disabled={product.hasSizes && !selectedSize}
+                disabled={hasSizes && !selectedSize}
                 className="h-14 w-full rounded-none bg-[#f3ff14] text-lg font-bold text-black uppercase hover:bg-white hover:text-black"
               >
                 Aggiungi al Carrello

@@ -4,10 +4,10 @@ import { ShopClient } from "@/components/shop-client";
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
-  let products = [];
+  let products: any[] = [];
 
   try {
-    products = await prisma.product.findMany({
+    products = await prisma.item.findMany({
       orderBy: { createdAt: "asc" },
     });
   } catch (error) {
