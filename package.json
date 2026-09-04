@@ -1,7 +1,7 @@
 {
   "name": "shop-anniversary",
   "version": "1.0.0",
-  "description": "Web application for managing anniversary shop",
+  "description": "Sito web per la vendita di prodotti in occasione del decimo anniversario del team",
   "packageManager": "pnpm@10.11.0",
   "license": "MIT",
   "type": "module",

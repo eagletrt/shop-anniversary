@@ -87,7 +87,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} scroll-smooth`}>
+    <html
+      lang="it"
+      suppressHydrationWarning
+      className={`${inter.variable} scroll-smooth`}
+    >
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <SplashScreenProvider>

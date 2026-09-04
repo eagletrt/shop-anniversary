@@ -2,21 +2,19 @@
 "use client";
 
 import { useState } from "react";
-import { Item } from "@prisma/client";
+import type { Product } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 
 interface ProductCardProps {
-  product: Item;
-  onSelect: (product: Item) => void;
+  product: Product;
+  onSelect: (product: Product) => void;
 }
 
 export function ProductCard({ product, onSelect }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Parse images if needed
-  const images = Array.isArray(product.images)
-    ? (product.images as string[])
-    : [];
+  // Images are already sanitized server-side as string[]
+  const images = product.images;
   const imageNeutral = images[0] || "/placeholder-neutral.jpg";
   const imageLifestyle = images[1] || imageNeutral;
 

@@ -2,7 +2,8 @@
 "use client";
 
 import { useState } from "react";
-import { Item } from "@prisma/client";
+import type { Product } from "@/lib/types";
+import type { CheckoutRequest } from "@/lib/types";
 import { useCartStore } from "@/lib/store";
 import {
   Sheet,
@@ -20,7 +21,7 @@ interface ShopDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   view: DrawerState;
-  product?: Item | null;
+  product?: Product | null;
   setView: (view: DrawerState) => void;
 }
 
@@ -47,10 +48,8 @@ export function ShopDrawer({
     ? product.taglia.split(",").map((s) => s.trim())
     : DEFAULT_SIZES;
 
-  const images =
-    product && Array.isArray(product.images)
-      ? (product.images as string[])
-      : [];
+  // Images are already sanitized server-side as string[]
+  const images = product?.images ?? [];
   const imageNeutral = images[0] || "/placeholder-neutral.jpg";
 
   const handleAddToCart = () => {
@@ -76,20 +75,20 @@ export function ShopDrawer({
     setIsSubmitting(true);
 
     try {
+      const checkoutData: CheckoutRequest = {
+        customerName: name,
+        customerEmail: email,
+        items: items.map((i) => ({
+          productId: i.productId,
+          size: i.size,
+          quantity: i.quantity,
+        })),
+      };
+
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          customerName: name,
-          customerEmail: email,
-          items: items.map((i) => ({
-            productId: i.productId,
-            size: i.size,
-            quantity: i.quantity,
-            priceAtTime: i.price,
-          })),
-          totalAmount: totalPrice(),
-        }),
+        body: JSON.stringify(checkoutData),
       });
 
       if (response.ok) {
@@ -333,7 +332,7 @@ export function ShopDrawer({
                 form="checkout-form"
                 type="submit"
                 disabled={isSubmitting}
-                className="h-14 flex-[2] rounded-none bg-[#f3ff14] text-lg font-bold text-black uppercase hover:bg-white hover:text-black"
+                className="h-14 flex-2 rounded-none bg-[#f3ff14] text-lg font-bold text-black uppercase hover:bg-white hover:text-black"
               >
                 {isSubmitting ? "Invio..." : "Conferma"}
               </Button>

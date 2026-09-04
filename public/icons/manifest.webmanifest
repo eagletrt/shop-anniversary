@@ -1,7 +1,7 @@
 {
     "name": "E-AgleTRT Anniversary Shop",
     "short_name": "E-AgleTRT Anniversary Shop",
-    "description": "Web application for managing anniversary shop",
+    "description": "Sito web per la vendita di prodotti in occasione del decimo anniversario del team",
     "start_url": "/",
     "display": "standalone",
     "id": "it.eagletrt.shop",

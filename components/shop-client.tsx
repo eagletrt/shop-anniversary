@@ -1,24 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { Item } from "@prisma/client";
+import type { Product } from "@/lib/types";
 import { ProductCard } from "@/components/product-card";
 import { ShopDrawer } from "@/components/shop-drawer";
 import { useCartStore } from "@/lib/store";
 
-export function ShopClient({ products }: { products: Item[] }) {
+export function ShopClient({ products }: { products: Product[] }) {
   const isDrawerOpen = useCartStore((state) => state.isDrawerOpen);
   const setDrawerOpen = useCartStore((state) => state.setDrawerOpen);
   const drawerView = useCartStore((state) => state.drawerView);
   const setDrawerView = useCartStore((state) => state.setDrawerView);
 
-  const [selectedProduct, setSelectedProduct] = useState<Item | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  const cartItemsCount = useCartStore((state) =>
-    state.items.reduce((acc, item) => acc + item.quantity, 0)
-  );
-
-  const handleProductSelect = (product: Item) => {
+  const handleProductSelect = (product: Product) => {
     setSelectedProduct(product);
     setDrawerView("product");
     setDrawerOpen(true);
