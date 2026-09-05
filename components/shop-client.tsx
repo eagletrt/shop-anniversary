@@ -7,7 +7,13 @@ import { ShopDrawer } from "@/components/shop-drawer";
 import { ProductModal } from "@/components/product-modal";
 import { useCartStore } from "@/lib/store";
 
-export function ShopClient({ products }: { products: GroupedProduct[] }) {
+export function ShopClient({
+  products,
+  isInternal,
+}: {
+  products: GroupedProduct[];
+  isInternal: boolean;
+}) {
   const isDrawerOpen = useCartStore((state) => state.isDrawerOpen);
   const setDrawerOpen = useCartStore((state) => state.setDrawerOpen);
   const drawerView = useCartStore((state) => state.drawerView);
@@ -43,6 +49,7 @@ export function ShopClient({ products }: { products: GroupedProduct[] }) {
               key={product.baseId}
               product={product}
               onSelect={handleProductSelect}
+              isInternal={isInternal}
             />
           ))}
         </div>
@@ -56,6 +63,7 @@ export function ShopClient({ products }: { products: GroupedProduct[] }) {
         }}
         view={drawerView}
         setView={setDrawerView}
+        isInternal={isInternal}
       />
 
       <ProductModal
@@ -65,6 +73,7 @@ export function ShopClient({ products }: { products: GroupedProduct[] }) {
           setIsProductModalOpen(false);
           setSelectedProduct(null);
         }}
+        isInternal={isInternal}
       />
     </div>
   );

@@ -8,9 +8,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 interface ProductCardProps {
   product: GroupedProduct;
   onSelect: (product: GroupedProduct) => void;
+  isInternal: boolean;
 }
 
-export function ProductCard({ product, onSelect }: ProductCardProps) {
+export function ProductCard({ product, onSelect, isInternal }: ProductCardProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
@@ -120,7 +121,7 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
           {product.nome}
         </h3>
         <p className="mt-1 font-mono text-lg font-semibold text-primary">
-          €{product.price.toFixed(2)}
+          €{(isInternal ? product.price : product.eventPrice).toFixed(2)}
         </p>
       </div>
     </div>

@@ -76,5 +76,7 @@ export default async function Page() {
     );
   }
 
-  return <ShopClient products={products} />;
+  const isInternal = process.env.INTERNAL === "true";
+
+  return <ShopClient products={products} isInternal={isInternal} />;
 }

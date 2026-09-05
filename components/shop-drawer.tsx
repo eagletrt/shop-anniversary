@@ -19,6 +19,7 @@ interface ShopDrawerProps {
   onClose: () => void;
   view: DrawerState;
   setView: (view: DrawerState) => void;
+  isInternal: boolean;
 }
 
 export function ShopDrawer({
@@ -26,8 +27,9 @@ export function ShopDrawer({
   onClose,
   view,
   setView,
+  isInternal,
 }: ShopDrawerProps) {
-  const { items, removeItem, updateQuantity, totalPrice, clearCart, isEventPickup, setIsEventPickup } =
+  const { items, removeItem, updateQuantity, clearCart, isEventPickup, setIsEventPickup } =
     useCartStore();
 
   // Checkout form state
@@ -41,12 +43,15 @@ export function ShopDrawer({
     setIsSubmitting(true);
 
     try {
+      // If internal, use the toggle. If external, they always pick up at the event.
+      const isEvent = isInternal ? isEventPickup : true;
+
       const checkoutData: CheckoutRequest = {
         customerName: name,
         customerEmail: email,
-        isEventPickup,
+        isEventPickup: isEvent,
         items: items.map((i) => ({
-          productId: isEventPickup ? i.eventProductId : i.baseProductId,
+          productId: isEvent ? i.eventProductId : i.baseProductId,
           size: i.size,
           quantity: i.quantity,
         })),
@@ -71,6 +76,15 @@ export function ShopDrawer({
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  // Determine active total based on isInternal
+  const getActiveTotal = () => {
+    return items.reduce((total, item) => {
+      const isEvent = isInternal ? isEventPickup : true;
+      const price = isEvent ? item.eventPrice : item.basePrice;
+      return total + price * item.quantity;
+    }, 0);
   };
 
   return (
@@ -99,13 +113,17 @@ export function ShopDrawer({
               <>
                 <div className="min-h-0 flex-1 overflow-y-auto p-6">
                   <div className="flex flex-col gap-6">
-                    {items.map((item) => (
+                    {items.map((item) => {
+                      const isEvent = isInternal ? isEventPickup : true;
+                      const activePrice = isEvent ? item.eventPrice : item.basePrice;
+                      
+                      return (
                       <div key={item.id} className="flex gap-4">
                         <div className="flex flex-1 flex-col gap-1">
                           <h4 className="font-bold">{item.name}</h4>
                           <div className="font-mono text-sm text-zinc-400">
                             {item.size ? `Taglia: ${item.size} | ` : ""}€
-                            {(isEventPickup ? item.eventPrice : item.basePrice).toFixed(2)}
+                            {activePrice.toFixed(2)}
                           </div>
 
                           <div className="mt-2 flex items-center gap-3">
@@ -140,27 +158,29 @@ export function ShopDrawer({
                           </div>
                         </div>
                       </div>
-                    ))}
+                    )})}
                   </div>
                 </div>
 
                 <div className="shrink-0 border-t border-zinc-800 bg-zinc-950 p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
-                  <div className="mb-6 flex items-center justify-between gap-4">
-                    <label htmlFor="event-pickup" className="text-sm font-bold text-zinc-300">
-                      Ritiro all&apos;Evento 10 Anni (Prezzo Intero)
-                    </label>
-                    <input
-                      id="event-pickup"
-                      type="checkbox"
-                      checked={isEventPickup}
-                      onChange={(e) => setIsEventPickup(e.target.checked)}
-                      className="h-5 w-5 rounded border-zinc-700 bg-zinc-900 text-neon focus:ring-neon"
-                    />
-                  </div>
+                  {isInternal && (
+                    <div className="mb-6 flex items-center justify-between gap-4">
+                      <label htmlFor="event-pickup" className="text-sm font-bold text-zinc-300">
+                        Ritiro all&apos;Evento 10 Anni (Prezzo Intero)
+                      </label>
+                      <input
+                        id="event-pickup"
+                        type="checkbox"
+                        checked={isEventPickup}
+                        onChange={(e) => setIsEventPickup(e.target.checked)}
+                        className="h-5 w-5 rounded border-zinc-700 bg-zinc-900 text-neon focus:ring-neon"
+                      />
+                    </div>
+                  )}
                   <div className="mb-6 flex items-center justify-between font-mono text-xl">
                     <span>TOTALE</span>
                     <span className="font-bold text-neon">
-                      €{totalPrice().toFixed(2)}
+                      €{getActiveTotal().toFixed(2)}
                     </span>
                   </div>
                   <Button
@@ -237,7 +257,7 @@ export function ShopDrawer({
                   <div className="flex items-center justify-between font-mono text-xl font-bold">
                     <span>Totale:</span>
                     <span className="text-neon">
-                      €{totalPrice().toFixed(2)}
+                      €{getActiveTotal().toFixed(2)}
                     </span>
                   </div>
                 </div>

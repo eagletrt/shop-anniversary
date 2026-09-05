@@ -18,9 +18,10 @@ interface ProductModalProps {
   product: GroupedProduct | null;
   isOpen: boolean;
   onClose: () => void;
+  isInternal: boolean;
 }
 
-export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
+export function ProductModal({ product, isOpen, onClose, isInternal }: ProductModalProps) {
   const [currentImage, setCurrentImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
@@ -180,7 +181,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                 </div>
 
                 <div className="font-mono text-xl font-bold text-neon">
-                  €{product.price.toFixed(2)}
+                  €{(isInternal ? product.price : product.eventPrice).toFixed(2)}
                 </div>
 
                 {hasSizes && (
