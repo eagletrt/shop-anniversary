@@ -1,0 +1,11 @@
+
+services:
+  shop:
+    image: shop-anniversary:latest
+    container_name: shop-anniversary-web
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@localhost:5432/shop_anniversary?schema=public
+      - NODE_ENV=production
