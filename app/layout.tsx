@@ -78,6 +78,7 @@ export const viewport: Viewport = {
   maximumScale: 1, // Disable auto-zoom on mobile Safari
   width: "device-width", // Set the viewport width to the device width
   height: "device-height", // Set the viewport height to the device height
+  viewportFit: "cover", // Extend into safe areas (needed for env(safe-area-inset-*))
 };
 
 export default function RootLayout({

@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import type { GroupedProduct } from "@/lib/types";
-import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ProductCardProps {
   product: GroupedProduct;
@@ -11,36 +11,111 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, onSelect }: ProductCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
-  // Images are already sanitized server-side as string[]
-  const images = product.images;
-  const imageNeutral = images[0] || "/placeholder-neutral.jpg";
-  const imageLifestyle = images[1] || imageNeutral;
+  const images =
+    product.images && product.images.length > 0
+      ? product.images
+      : ["/placeholder-neutral.jpg"];
+
+  const isCurrentLoaded = loadedImages.has(currentIndex);
+
+  const handleImageLoaded = useCallback((index: number) => {
+    setLoadedImages((prev) => {
+      if (prev.has(index)) return prev;
+      return new Set(prev).add(index);
+    });
+  }, []);
+
+  const handlePrevious = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleDotClick = (e: React.MouseEvent, index: number) => {
+    e.stopPropagation();
+    if (index !== currentIndex) {
+      setCurrentIndex(index);
+    }
+  };
 
   return (
     <div
-      className="group relative flex aspect-3/4 w-full cursor-pointer flex-col gap-4 sm:aspect-auto sm:h-150"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onTouchStart={() => setIsHovered(!isHovered)}
+      className="group flex cursor-pointer flex-col gap-4 rounded-xl p-2 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
       onClick={() => onSelect(product)}
     >
-      <div className="relative w-full grow overflow-hidden rounded-lg bg-muted">
-        <img
-          src={isHovered ? imageLifestyle : imageNeutral}
-          alt={product.nome}
-          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300"
-          style={{ opacity: isHovered ? 1 : 0.9 }}
+      <div className="relative aspect-4/5 w-full overflow-hidden rounded-xl bg-muted">
+        {/* Skeleton */}
+        <div
+          className={`absolute inset-0 z-10 bg-zinc-800 transition-opacity duration-300 ${
+            isCurrentLoaded
+              ? "pointer-events-none opacity-0"
+              : "animate-pulse opacity-100"
+          }`}
         />
-        {/* Overlay on hover */}
-        <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <Button className="pointer-events-none bg-primary font-bold text-primary-foreground uppercase hover:bg-white hover:text-black">
-            Aggiungi
-          </Button>
-        </div>
+
+        {/* Image — callback ref handles cached images where onLoad fires before React attaches */}
+        <img
+          key={`${product.id}-${currentIndex}`}
+          ref={(node) => {
+            if (node && node.complete && node.naturalWidth > 0) {
+              handleImageLoaded(currentIndex);
+            }
+          }}
+          src={images[currentIndex]}
+          alt={`${product.nome} - Image ${currentIndex + 1}`}
+          className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-500 ${
+            isCurrentLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => handleImageLoaded(currentIndex)}
+        />
+
+        {/* Arrows */}
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={handlePrevious}
+              className="absolute top-1/2 left-2 z-20 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:bg-black/50"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute top-1/2 right-2 z-20 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:bg-black/50"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </>
+        )}
+
+        {/* Dots */}
+        {images.length > 1 && (
+          <div className="absolute right-0 bottom-3 left-0 z-20 flex justify-center gap-1.5">
+            {images.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={(e) => handleDotClick(e, idx)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  idx === currentIndex
+                    ? "w-4 bg-white"
+                    : "w-1.5 bg-white/50 hover:bg-white/75"
+                }`}
+                aria-label={`Go to image ${idx + 1}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
-      <div className="flex flex-col items-center justify-center pb-4 text-center">
+
+      <div className="flex flex-col items-center justify-center px-2 pb-2 text-center">
         <h3 className="text-xl font-bold tracking-wide text-foreground italic">
           {product.nome}
         </h3>

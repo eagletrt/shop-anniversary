@@ -1,8 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
-import type { GroupedProduct } from "@/lib/types";
 import type { CheckoutRequest } from "@/lib/types";
 import { useCartStore } from "@/lib/store";
 import {
@@ -12,7 +10,6 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Trash2, Plus, Minus } from "lucide-react";
 
 type DrawerState = "closed" | "product" | "cart" | "checkout";
@@ -21,7 +18,6 @@ interface ShopDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   view: DrawerState;
-  product?: GroupedProduct | null;
   setView: (view: DrawerState) => void;
 }
 
@@ -29,57 +25,15 @@ export function ShopDrawer({
   isOpen,
   onClose,
   view,
-  product,
   setView,
 }: ShopDrawerProps) {
-  const { items, addItem, removeItem, updateQuantity, totalPrice, clearCart } =
+  const { items, removeItem, updateQuantity, totalPrice, clearCart } =
     useCartStore();
-  const [selectedSize, setSelectedSize] = useState<string>("");
 
   // Checkout form state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Whether this product has size variants
-  const hasSizes = product ? product.variants.length > 0 : false;
-
-  // Images are already sanitized server-side as string[]
-  const images = product?.images ?? [];
-  const imageNeutral = images[0] || "/placeholder-neutral.jpg";
-
-  const handleAddToCart = () => {
-    if (!product) return;
-
-    if (hasSizes) {
-      if (!selectedSize) return;
-
-      // Find the variant that matches the selected size to get the real DB item id
-      const variant = product.variants.find((v) => v.taglia === selectedSize);
-      if (!variant) return;
-
-      addItem({
-        id: Math.random().toString(36).substring(7),
-        productId: variant.itemId, // the specific DB row for this size
-        name: product.nome,
-        price: product.price,
-        quantity: 1,
-        size: selectedSize,
-      });
-    } else {
-      // No sizes — use the product's representative id
-      addItem({
-        id: Math.random().toString(36).substring(7),
-        productId: product.id,
-        name: product.nome,
-        price: product.price,
-        quantity: 1,
-      });
-    }
-
-    setSelectedSize("");
-    setView("cart");
-  };
 
   const handleCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -121,70 +75,9 @@ export function ShopDrawer({
   return (
     <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <SheetContent className="flex w-full flex-col border-zinc-800 bg-zinc-950 p-0 text-white sm:max-w-md">
-        {view === "product" && product && (
-          <>
-            <SheetHeader className="border-b border-zinc-800 p-6">
-              <SheetTitle className="text-2xl font-bold text-white italic">
-                {product.nome}
-              </SheetTitle>
-            </SheetHeader>
-            <div className="flex flex-1 flex-col gap-6 overflow-y-auto p-6">
-              <div className="relative aspect-square overflow-hidden rounded-lg bg-zinc-900">
-                <img
-                  src={imageNeutral}
-                  alt={product.nome}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              </div>
-
-              {product.description && (
-                <p className="text-sm leading-relaxed text-zinc-400">
-                  {product.description}
-                </p>
-              )}
-
-              <div className="font-mono text-xl font-bold text-[#f3ff14]">
-                €{product.price.toFixed(2)}
-              </div>
-
-              {hasSizes && (
-                <div className="mt-4 flex flex-col gap-3">
-                  <label className="text-sm font-semibold tracking-wider uppercase">
-                    Seleziona Taglia
-                  </label>
-                  <div className="flex flex-wrap gap-2">
-                    {product.variants.map((v) => (
-                      <button
-                        key={v.taglia}
-                        onClick={() => setSelectedSize(v.taglia)}
-                        className={`flex h-12 min-w-12 items-center justify-center border px-2 font-mono transition-colors ${
-                          selectedSize === v.taglia
-                            ? "border-[#f3ff14] bg-[#f3ff14] font-bold text-black"
-                            : "border-zinc-700 text-white hover:border-white"
-                        }`}
-                      >
-                        {v.taglia}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-            <div className="border-t border-zinc-800 p-6">
-              <Button
-                onClick={handleAddToCart}
-                disabled={hasSizes && !selectedSize}
-                className="h-14 w-full rounded-none bg-[#f3ff14] text-lg font-bold text-black uppercase hover:bg-white hover:text-black"
-              >
-                Aggiungi al Carrello
-              </Button>
-            </div>
-          </>
-        )}
-
         {view === "cart" && (
-          <>
-            <SheetHeader className="border-b border-zinc-800 p-6">
+          <div className="flex h-full flex-col overflow-hidden">
+            <SheetHeader className="shrink-0 border-b border-zinc-800 p-6">
               <SheetTitle className="text-2xl font-bold tracking-wider text-white uppercase">
                 Il tuo Carrello
               </SheetTitle>
@@ -195,7 +88,7 @@ export function ShopDrawer({
                 <p>Il carrello è vuoto.</p>
                 <Button
                   variant="link"
-                  className="mt-4 text-[#f3ff14]"
+                  className="mt-4 text-neon"
                   onClick={onClose}
                 >
                   Continua gli acquisti
@@ -203,7 +96,7 @@ export function ShopDrawer({
               </div>
             ) : (
               <>
-                <ScrollArea className="flex-1 p-6">
+                <div className="min-h-0 flex-1 overflow-y-auto p-6">
                   <div className="flex flex-col gap-6">
                     {items.map((item) => (
                       <div key={item.id} className="flex gap-4">
@@ -248,35 +141,35 @@ export function ShopDrawer({
                       </div>
                     ))}
                   </div>
-                </ScrollArea>
+                </div>
 
-                <div className="border-t border-zinc-800 bg-zinc-950 p-6">
+                <div className="shrink-0 border-t border-zinc-800 bg-zinc-950 p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
                   <div className="mb-6 flex items-center justify-between font-mono text-xl">
                     <span>TOTALE</span>
-                    <span className="font-bold text-[#f3ff14]">
+                    <span className="font-bold text-neon">
                       €{totalPrice().toFixed(2)}
                     </span>
                   </div>
                   <Button
                     onClick={() => setView("checkout")}
-                    className="h-14 w-full rounded-none bg-[#f3ff14] text-lg font-bold text-black uppercase hover:bg-white hover:text-black"
+                    className="h-14 w-full rounded-none bg-neon text-lg font-bold text-black uppercase hover:bg-white hover:text-black"
                   >
                     Procedi al Pre-ordine
                   </Button>
                 </div>
               </>
             )}
-          </>
+          </div>
         )}
 
         {view === "checkout" && (
-          <>
-            <SheetHeader className="border-b border-zinc-800 p-6">
+          <div className="flex h-full flex-col overflow-hidden">
+            <SheetHeader className="shrink-0 border-b border-zinc-800 p-6">
               <SheetTitle className="text-2xl font-bold text-white uppercase">
                 Invia Pre-ordine
               </SheetTitle>
             </SheetHeader>
-            <ScrollArea className="flex-1">
+            <div className="min-h-0 flex-1 overflow-y-auto">
               <form
                 id="checkout-form"
                 onSubmit={handleCheckout}
@@ -306,7 +199,7 @@ export function ShopDrawer({
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full rounded border border-zinc-700 bg-zinc-900 p-3 text-white transition-colors focus:border-[#f3ff14] focus:outline-none"
+                    className="w-full rounded border border-zinc-700 bg-zinc-900 p-3 text-white transition-colors focus:border-neon focus:outline-none"
                   />
                 </div>
 
@@ -319,7 +212,7 @@ export function ShopDrawer({
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full rounded border border-zinc-700 bg-zinc-900 p-3 text-white transition-colors focus:border-[#f3ff14] focus:outline-none"
+                    className="w-full rounded border border-zinc-700 bg-zinc-900 p-3 text-white transition-colors focus:border-neon focus:outline-none"
                   />
                 </div>
 
@@ -330,14 +223,14 @@ export function ShopDrawer({
                   </div>
                   <div className="flex items-center justify-between font-mono text-xl font-bold">
                     <span>Totale:</span>
-                    <span className="text-[#f3ff14]">
+                    <span className="text-neon">
                       €{totalPrice().toFixed(2)}
                     </span>
                   </div>
                 </div>
               </form>
-            </ScrollArea>
-            <div className="flex gap-4 border-t border-zinc-800 p-6">
+            </div>
+            <div className="flex shrink-0 gap-4 border-t border-zinc-800 p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
               <Button
                 type="button"
                 variant="outline"
@@ -350,12 +243,12 @@ export function ShopDrawer({
                 form="checkout-form"
                 type="submit"
                 disabled={isSubmitting}
-                className="h-14 flex-2 rounded-none bg-[#f3ff14] text-lg font-bold text-black uppercase hover:bg-white hover:text-black"
+                className="h-14 flex-2 rounded-none bg-neon text-lg font-bold text-black uppercase hover:bg-white hover:text-black"
               >
                 {isSubmitting ? "Invio..." : "Conferma"}
               </Button>
             </div>
-          </>
+          </div>
         )}
       </SheetContent>
     </Sheet>

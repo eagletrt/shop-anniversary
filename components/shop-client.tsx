@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { GroupedProduct } from "@/lib/types";
 import { ProductCard } from "@/components/product-card";
 import { ShopDrawer } from "@/components/shop-drawer";
+import { ProductModal } from "@/components/product-modal";
 import { useCartStore } from "@/lib/store";
 
 export function ShopClient({ products }: { products: GroupedProduct[] }) {
@@ -12,13 +13,14 @@ export function ShopClient({ products }: { products: GroupedProduct[] }) {
   const drawerView = useCartStore((state) => state.drawerView);
   const setDrawerView = useCartStore((state) => state.setDrawerView);
 
-  const [selectedProduct, setSelectedProduct] =
-    useState<GroupedProduct | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<GroupedProduct | null>(
+    null
+  );
+  const [isProductModalOpen, setIsProductModalOpen] = useState(false);
 
   const handleProductSelect = (product: GroupedProduct) => {
     setSelectedProduct(product);
-    setDrawerView("product");
-    setDrawerOpen(true);
+    setIsProductModalOpen(true);
   };
 
   return (
@@ -54,7 +56,15 @@ export function ShopClient({ products }: { products: GroupedProduct[] }) {
         }}
         view={drawerView}
         setView={setDrawerView}
+      />
+
+      <ProductModal
         product={selectedProduct}
+        isOpen={isProductModalOpen}
+        onClose={() => {
+          setIsProductModalOpen(false);
+          setSelectedProduct(null);
+        }}
       />
     </div>
   );

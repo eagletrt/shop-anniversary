@@ -12,7 +12,12 @@ export function Footer() {
         <div>
           <p className="font-semibold text-foreground">Sede operativa</p>
           <p>
-            <a href="https://goo.gl/maps/ZwzsZx3RUqU9Xk5A7" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+            <a
+              href="https://goo.gl/maps/ZwzsZx3RUqU9Xk5A7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary"
+            >
               Via Sommarive n. 9
               <br />
               38123 Povo (TN) - Italy
@@ -24,7 +29,12 @@ export function Footer() {
         <div className="sm:text-center">
           <p className="font-semibold text-foreground">Sede legale</p>
           <p>
-            <a href="https://goo.gl/maps/ogMA9oWj6gYVjdmLA" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+            <a
+              href="https://goo.gl/maps/ogMA9oWj6gYVjdmLA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary"
+            >
               Via Fortunato Zeni n. 8
               <br />
               38068 Rovereto (TN) - Italy
@@ -54,7 +64,9 @@ export function Footer() {
       {/* Bottom row */}
       <div className="grid grid-cols-1 items-center gap-4 text-center text-xs text-muted-foreground sm:grid-cols-3">
         {/* Copyright */}
-        <p className="sm:text-left">© 2026 E-Agle TRT ASD. All rights reserved.</p>
+        <p className="sm:text-left">
+          © 2026 E-Agle TRT ASD. All rights reserved.
+        </p>
 
         {/* Logo linking to main website */}
         <div className="flex justify-center">
