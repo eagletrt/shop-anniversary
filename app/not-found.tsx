@@ -9,7 +9,13 @@ export default function NotFound() {
       <h1 className="text-2xl font-black tracking-tighter uppercase italic md:text-4xl">
         L&apos;aquila ha perso la strada
       </h1>
-      <Image src="/miss.png" className="rounded-xl" alt="404" width={512} height={512} />
+      <Image
+        src="/miss.png"
+        className="rounded-xl"
+        alt="404"
+        width={512}
+        height={512}
+      />
       <p className="mx-auto max-w-2xl font-mono text-sm text-muted-foreground md:text-base">
         Controlla il link e riprova
       </p>
