@@ -3,6 +3,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import {
   Dialog,
   DialogContent,
@@ -94,7 +95,10 @@ export function ProductModal({
   };
 
   const nameLower = product?.nome.toLowerCase() || "";
-  const isTshirt = nameLower.includes("maglia") || nameLower.includes("t-shirt") || nameLower.includes("tshirt");
+  const isTshirt =
+    nameLower.includes("maglia") ||
+    nameLower.includes("t-shirt") ||
+    nameLower.includes("tshirt");
   const isHoodie = nameLower.includes("felpa") || nameLower.includes("hoodie");
   const isProPack = nameLower.includes("pro pack");
   const isVipPack = nameLower.includes("vip pack");
@@ -124,21 +128,47 @@ export function ProductModal({
               />
 
               {/* Image — callback ref handles cached images where onLoad fires before React attaches */}
-              <img
-                key={`${product.baseId}-${currentImage}`}
-                ref={(node) => {
-                  if (node && node.complete && node.naturalWidth > 0) {
-                    handleImageLoaded(currentImage);
-                  }
-                }}
-                src={images[currentImage]}
-                alt={product.nome}
-                className={cn(
-                  "absolute inset-0 h-full w-full object-contain transition-opacity duration-300",
-                  isCurrentLoaded ? "opacity-100" : "opacity-0"
+              <TransformWrapper
+                initialScale={1}
+                minScale={1}
+                maxScale={4}
+                doubleClick={{ disabled: false }}
+                wheel={{ wheelDisabled: false }}
+                panning={{ disabled: false }}
+              >
+                {({ zoomIn, resetTransform, state }) => (
+                  <TransformComponent
+                    wrapperClass="!absolute !inset-0 !w-full !h-full"
+                    contentClass="!w-full !h-full flex items-center justify-center"
+                  >
+                    <img
+                      key={`${product.baseId}-${currentImage}`}
+                      ref={(node) => {
+                        if (node && node.complete && node.naturalWidth > 0) {
+                          handleImageLoaded(currentImage);
+                        }
+                      }}
+                      src={images[currentImage]}
+                      alt={product.nome}
+                      className={cn(
+                        "max-h-full max-w-full object-contain transition-opacity duration-300",
+                        isCurrentLoaded ? "opacity-100" : "opacity-0",
+                        state.scale > 1
+                          ? "cursor-grab active:cursor-grabbing"
+                          : "cursor-zoom-in"
+                      )}
+                      onClick={() => {
+                        if (state.scale === 1) {
+                          zoomIn();
+                        } else {
+                          resetTransform();
+                        }
+                      }}
+                      onLoad={() => handleImageLoaded(currentImage)}
+                    />
+                  </TransformComponent>
                 )}
-                onLoad={() => handleImageLoaded(currentImage)}
-              />
+              </TransformWrapper>
 
               {images.length > 1 && (
                 <>
@@ -193,16 +223,22 @@ export function ProductModal({
                   <DialogDescription className="text-sm text-zinc-400">
                     {product.description || "Nessuna descrizione disponibile."}
                   </DialogDescription>
-                  
+
                   {(showTshirtGuide || showHoodieGuide) && (
                     <div className="mt-4 flex flex-wrap gap-4">
                       {showTshirtGuide && (
-                        <Link href="/taglie/tshirt" className="text-sm font-medium text-neon hover:underline flex items-center gap-1.5 transition-all hover:opacity-80">
+                        <Link
+                          href="/taglie/tshirt"
+                          className="flex items-center gap-1.5 text-sm font-medium text-neon transition-all hover:underline hover:opacity-80"
+                        >
                           <Ruler className="h-4 w-4" /> Guida Taglie Maglia
                         </Link>
                       )}
                       {showHoodieGuide && (
-                        <Link href="/taglie/hoodie" className="text-sm font-medium text-neon hover:underline flex items-center gap-1.5 transition-all hover:opacity-80">
+                        <Link
+                          href="/taglie/hoodie"
+                          className="flex items-center gap-1.5 text-sm font-medium text-neon transition-all hover:underline hover:opacity-80"
+                        >
                           <Ruler className="h-4 w-4" /> Guida Taglie Felpa
                         </Link>
                       )}
