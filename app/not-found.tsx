@@ -15,6 +15,7 @@ export default function NotFound() {
         alt="404"
         width={512}
         height={512}
+        priority
       />
       <p className="mx-auto max-w-2xl font-mono text-sm text-muted-foreground md:text-base">
         Controlla il link e riprova
