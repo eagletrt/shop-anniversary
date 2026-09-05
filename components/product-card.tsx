@@ -11,7 +11,11 @@ interface ProductCardProps {
   isInternal: boolean;
 }
 
-export function ProductCard({ product, onSelect, isInternal }: ProductCardProps) {
+export function ProductCard({
+  product,
+  onSelect,
+  isInternal,
+}: ProductCardProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 

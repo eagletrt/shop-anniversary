@@ -90,7 +90,7 @@ export default function RootLayout({
     <html
       lang="it"
       suppressHydrationWarning
-      className={`${inter.variable} scroll-smooth data-scroll-behavior="smooth"`}
+      className={`${inter.variable} data-scroll-behavior="smooth" scroll-smooth`}
     >
       <body>
         <SplashScreenProvider>

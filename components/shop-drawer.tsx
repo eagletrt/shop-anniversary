@@ -29,8 +29,14 @@ export function ShopDrawer({
   setView,
   isInternal,
 }: ShopDrawerProps) {
-  const { items, removeItem, updateQuantity, clearCart, isEventPickup, setIsEventPickup } =
-    useCartStore();
+  const {
+    items,
+    removeItem,
+    updateQuantity,
+    clearCart,
+    isEventPickup,
+    setIsEventPickup,
+  } = useCartStore();
 
   // Checkout form state
   const [name, setName] = useState("");
@@ -115,57 +121,63 @@ export function ShopDrawer({
                   <div className="flex flex-col gap-6">
                     {items.map((item) => {
                       const isEvent = isInternal ? isEventPickup : true;
-                      const activePrice = isEvent ? item.eventPrice : item.basePrice;
-                      
-                      return (
-                      <div key={item.id} className="flex gap-4">
-                        <div className="flex flex-1 flex-col gap-1">
-                          <h4 className="font-bold">{item.name}</h4>
-                          <div className="font-mono text-sm text-zinc-400">
-                            {item.size ? `Taglia: ${item.size} | ` : ""}€
-                            {activePrice.toFixed(2)}
-                          </div>
+                      const activePrice = isEvent
+                        ? item.eventPrice
+                        : item.basePrice;
 
-                          <div className="mt-2 flex items-center gap-3">
-                            <button
-                              onClick={() =>
-                                updateQuantity(
-                                  item.id,
-                                  Math.max(1, item.quantity - 1)
-                                )
-                              }
-                              className="flex h-8 w-8 items-center justify-center rounded border border-zinc-700 hover:bg-zinc-800"
-                            >
-                              <Minus size={14} />
-                            </button>
-                            <span className="w-4 text-center font-mono">
-                              {item.quantity}
-                            </span>
-                            <button
-                              onClick={() =>
-                                updateQuantity(item.id, item.quantity + 1)
-                              }
-                              className="flex h-8 w-8 items-center justify-center rounded border border-zinc-700 hover:bg-zinc-800"
-                            >
-                              <Plus size={14} />
-                            </button>
-                            <button
-                              onClick={() => removeItem(item.id)}
-                              className="ml-auto p-2 text-red-500 hover:text-red-400"
-                            >
-                              <Trash2 size={16} />
-                            </button>
+                      return (
+                        <div key={item.id} className="flex gap-4">
+                          <div className="flex flex-1 flex-col gap-1">
+                            <h4 className="font-bold">{item.name}</h4>
+                            <div className="font-mono text-sm text-zinc-400">
+                              {item.size ? `Taglia: ${item.size} | ` : ""}€
+                              {activePrice.toFixed(2)}
+                            </div>
+
+                            <div className="mt-2 flex items-center gap-3">
+                              <button
+                                onClick={() =>
+                                  updateQuantity(
+                                    item.id,
+                                    Math.max(1, item.quantity - 1)
+                                  )
+                                }
+                                className="flex h-8 w-8 items-center justify-center rounded border border-zinc-700 hover:bg-zinc-800"
+                              >
+                                <Minus size={14} />
+                              </button>
+                              <span className="w-4 text-center font-mono">
+                                {item.quantity}
+                              </span>
+                              <button
+                                onClick={() =>
+                                  updateQuantity(item.id, item.quantity + 1)
+                                }
+                                className="flex h-8 w-8 items-center justify-center rounded border border-zinc-700 hover:bg-zinc-800"
+                              >
+                                <Plus size={14} />
+                              </button>
+                              <button
+                                onClick={() => removeItem(item.id)}
+                                className="ml-auto p-2 text-red-500 hover:text-red-400"
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )})}
+                      );
+                    })}
                   </div>
                 </div>
 
                 <div className="shrink-0 border-t border-zinc-800 bg-zinc-950 p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
                   {isInternal && (
                     <div className="mb-6 flex items-center justify-between gap-4">
-                      <label htmlFor="event-pickup" className="text-sm font-bold text-zinc-300">
+                      <label
+                        htmlFor="event-pickup"
+                        className="text-sm font-bold text-zinc-300"
+                      >
                         Ritiro all&apos;Evento 10 Anni (Prezzo Intero)
                       </label>
                       <input

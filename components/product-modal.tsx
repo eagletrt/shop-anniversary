@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
 import {
   Dialog,
   DialogContent,
@@ -9,7 +10,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Plus, Minus } from "lucide-react";
+import { ChevronLeft, ChevronRight, Plus, Minus, Ruler } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 import type { GroupedProduct } from "@/lib/types";
 import { cn } from "cn";
@@ -21,7 +22,12 @@ interface ProductModalProps {
   isInternal: boolean;
 }
 
-export function ProductModal({ product, isOpen, onClose, isInternal }: ProductModalProps) {
+export function ProductModal({
+  product,
+  isOpen,
+  onClose,
+  isInternal,
+}: ProductModalProps) {
   const [currentImage, setCurrentImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
@@ -86,6 +92,15 @@ export function ProductModal({ product, isOpen, onClose, isInternal }: ProductMo
     setDrawerView("cart");
     setDrawerOpen(true);
   };
+
+  const nameLower = product?.nome.toLowerCase() || "";
+  const isTshirt = nameLower.includes("maglia") || nameLower.includes("t-shirt") || nameLower.includes("tshirt");
+  const isHoodie = nameLower.includes("felpa") || nameLower.includes("hoodie");
+  const isProPack = nameLower.includes("pro pack");
+  const isVipPack = nameLower.includes("vip pack");
+
+  const showTshirtGuide = isTshirt || isProPack || isVipPack;
+  const showHoodieGuide = isHoodie || isVipPack;
 
   const images =
     product?.images && product.images.length > 0
@@ -178,10 +193,26 @@ export function ProductModal({ product, isOpen, onClose, isInternal }: ProductMo
                   <DialogDescription className="text-sm text-zinc-400">
                     {product.description || "Nessuna descrizione disponibile."}
                   </DialogDescription>
+                  
+                  {(showTshirtGuide || showHoodieGuide) && (
+                    <div className="mt-4 flex flex-wrap gap-4">
+                      {showTshirtGuide && (
+                        <Link href="/taglie/tshirt" className="text-sm font-medium text-neon hover:underline flex items-center gap-1.5 transition-all hover:opacity-80">
+                          <Ruler className="h-4 w-4" /> Guida Taglie Maglia
+                        </Link>
+                      )}
+                      {showHoodieGuide && (
+                        <Link href="/taglie/hoodie" className="text-sm font-medium text-neon hover:underline flex items-center gap-1.5 transition-all hover:opacity-80">
+                          <Ruler className="h-4 w-4" /> Guida Taglie Felpa
+                        </Link>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 <div className="font-mono text-xl font-bold text-neon">
-                  €{(isInternal ? product.price : product.eventPrice).toFixed(2)}
+                  €
+                  {(isInternal ? product.price : product.eventPrice).toFixed(2)}
                 </div>
 
                 {hasSizes && (
