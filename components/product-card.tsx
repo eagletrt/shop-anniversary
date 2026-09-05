@@ -81,14 +81,14 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
           <>
             <button
               onClick={handlePrevious}
-              className="absolute top-1/2 left-2 z-20 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:bg-black/50"
+              className="absolute top-1/2 left-2 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:bg-black/50"
               aria-label="Previous image"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={handleNext}
-              className="absolute top-1/2 right-2 z-20 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:bg-black/50"
+              className="absolute top-1/2 right-2 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:bg-black/50"
               aria-label="Next image"
             >
               <ChevronRight className="h-5 w-5" />

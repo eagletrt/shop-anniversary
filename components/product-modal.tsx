@@ -125,7 +125,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="absolute top-1/2 left-2 z-10 h-8 w-8 -translate-y-1/2 rounded-full bg-black/20 text-white hover:bg-black/40"
+                    className="absolute top-1/2 left-2 z-10 h-8 w-8 rounded-full bg-black/20 text-white hover:bg-black/40"
                     onClick={() => {
                       setCurrentImage((prev) =>
                         prev === 0 ? images.length - 1 : prev - 1
@@ -137,7 +137,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="absolute top-1/2 right-2 z-10 h-8 w-8 -translate-y-1/2 rounded-full bg-black/20 text-white hover:bg-black/40"
+                    className="absolute top-1/2 right-2 z-10 h-8 w-8 rounded-full bg-black/20 text-white hover:bg-black/40"
                     onClick={() => {
                       setCurrentImage((prev) =>
                         prev === images.length - 1 ? 0 : prev + 1
