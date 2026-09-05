@@ -220,6 +220,7 @@ async function main() {
       description: "Include: Portachiavi RBR, Tote Bag, Tappetino.",
       tenYears: true,
       images: [
+        "/images/Starter_pack.webp",
         "/images/Portachiavi_RBR.png",
         "/images/tote-bag.webp",
         "/images/MousePad.png",
@@ -235,6 +236,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -249,6 +251,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -263,6 +266,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -277,6 +281,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -291,6 +296,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -305,6 +311,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -319,6 +326,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -333,6 +341,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -347,6 +356,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -361,6 +371,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -377,6 +388,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -393,6 +405,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -409,6 +422,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -425,6 +439,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -441,6 +456,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -457,6 +473,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -473,6 +490,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -489,6 +507,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -505,6 +524,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -521,6 +541,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -742,6 +763,7 @@ async function main() {
       description: "Include: Portachiavi RBR, Tote Bag, Tappetino.",
       tenYears: false,
       images: [
+        "/images/Starter_pack.webp",
         "/images/Portachiavi_RBR.png",
         "/images/tote-bag.webp",
         "/images/MousePad.png",
@@ -757,6 +779,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -771,6 +794,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -785,6 +809,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -799,6 +824,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -813,6 +839,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -827,6 +854,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -841,6 +869,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -855,6 +884,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -869,6 +899,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -883,6 +914,7 @@ async function main() {
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Pro_pack.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
@@ -899,6 +931,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -915,6 +948,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -931,6 +965,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -947,6 +982,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -963,6 +999,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -979,6 +1016,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -995,6 +1033,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -1011,6 +1050,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -1027,6 +1067,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
@@ -1043,6 +1084,7 @@ async function main() {
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
       images: [
+        "/images/Vip_pack.webp",
         "/images/Felpa_front.webp",
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
