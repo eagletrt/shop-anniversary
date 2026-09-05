@@ -27,7 +27,7 @@ export function ShopDrawer({
   view,
   setView,
 }: ShopDrawerProps) {
-  const { items, removeItem, updateQuantity, totalPrice, clearCart } =
+  const { items, removeItem, updateQuantity, totalPrice, clearCart, isEventPickup, setIsEventPickup } =
     useCartStore();
 
   // Checkout form state
@@ -44,8 +44,9 @@ export function ShopDrawer({
       const checkoutData: CheckoutRequest = {
         customerName: name,
         customerEmail: email,
+        isEventPickup,
         items: items.map((i) => ({
-          productId: i.productId,
+          productId: isEventPickup ? i.eventProductId : i.baseProductId,
           size: i.size,
           quantity: i.quantity,
         })),
@@ -104,7 +105,7 @@ export function ShopDrawer({
                           <h4 className="font-bold">{item.name}</h4>
                           <div className="font-mono text-sm text-zinc-400">
                             {item.size ? `Taglia: ${item.size} | ` : ""}€
-                            {item.price.toFixed(2)}
+                            {(isEventPickup ? item.eventPrice : item.basePrice).toFixed(2)}
                           </div>
 
                           <div className="mt-2 flex items-center gap-3">
@@ -144,6 +145,18 @@ export function ShopDrawer({
                 </div>
 
                 <div className="shrink-0 border-t border-zinc-800 bg-zinc-950 p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
+                  <div className="mb-6 flex items-center justify-between gap-4">
+                    <label htmlFor="event-pickup" className="text-sm font-bold text-zinc-300">
+                      Ritiro all&apos;Evento 10 Anni (Prezzo Intero)
+                    </label>
+                    <input
+                      id="event-pickup"
+                      type="checkbox"
+                      checked={isEventPickup}
+                      onChange={(e) => setIsEventPickup(e.target.checked)}
+                      className="h-5 w-5 rounded border-zinc-700 bg-zinc-900 text-neon focus:ring-neon"
+                    />
+                  </div>
                   <div className="mb-6 flex items-center justify-between font-mono text-xl">
                     <span>TOTALE</span>
                     <span className="font-bold text-neon">

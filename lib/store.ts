@@ -2,9 +2,11 @@ import { create } from "zustand";
 
 export type CartItem = {
   id: string;
-  productId: string;
+  baseProductId: string;
+  eventProductId: string;
   name: string;
-  price: number;
+  basePrice: number;
+  eventPrice: number;
   quantity: number;
   size?: string;
 };
@@ -13,6 +15,8 @@ interface CartStore {
   items: CartItem[];
   isDrawerOpen: boolean;
   drawerView: "closed" | "product" | "cart" | "checkout";
+  isEventPickup: boolean;
+  setIsEventPickup: (val: boolean) => void;
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
@@ -26,12 +30,14 @@ export const useCartStore = create<CartStore>((set, get) => ({
   items: [],
   isDrawerOpen: false,
   drawerView: "closed",
+  isEventPickup: false,
+  setIsEventPickup: (val) => set({ isEventPickup: val }),
   setDrawerOpen: (isOpen) => set({ isDrawerOpen: isOpen }),
   setDrawerView: (view) => set({ drawerView: view }),
   addItem: (item) =>
     set((state) => {
       const existingItem = state.items.find(
-        (i) => i.productId === item.productId && i.size === item.size
+        (i) => i.baseProductId === item.baseProductId && i.size === item.size
       );
       if (existingItem) {
         return {
@@ -54,9 +60,10 @@ export const useCartStore = create<CartStore>((set, get) => ({
     })),
   clearCart: () => set({ items: [] }),
   totalPrice: () => {
-    return get().items.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
+    const state = get();
+    return state.items.reduce((total, item) => {
+      const price = state.isEventPickup ? item.eventPrice : item.basePrice;
+      return total + price * item.quantity;
+    }, 0);
   },
 }));

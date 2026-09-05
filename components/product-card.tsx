@@ -62,7 +62,7 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
 
         {/* Image — callback ref handles cached images where onLoad fires before React attaches */}
         <img
-          key={`${product.id}-${currentIndex}`}
+          key={`${product.baseId}-${currentIndex}`}
           ref={(node) => {
             if (node && node.complete && node.naturalWidth > 0) {
               handleImageLoaded(currentIndex);

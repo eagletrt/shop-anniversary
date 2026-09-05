@@ -18,7 +18,8 @@ export type Product = {
 /** A single size variant mapping taglia → DB item id */
 export type SizeVariant = {
   taglia: string;
-  itemId: string;
+  baseItemId: string;
+  eventItemId: string;
 };
 
 /**
@@ -29,13 +30,14 @@ export type SizeVariant = {
  * and `id` is the single DB row id.
  */
 export type GroupedProduct = {
-  id: string; // representative item id (first variant, or the only row)
+  baseId: string;
+  eventId: string;
   nome: string;
   description: string | null;
-  tenYears: boolean;
   price: number;
+  eventPrice: number;
   images: string[];
-  variants: SizeVariant[]; // empty for items without taglia
+  variants: SizeVariant[];
 };
 
 /** Item sent from the client during checkout */
@@ -49,6 +51,7 @@ export type CheckoutItem = {
 export type CheckoutRequest = {
   customerName: string;
   customerEmail: string;
+  isEventPickup: boolean;
   items: CheckoutItem[];
 };
 

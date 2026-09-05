@@ -40,7 +40,7 @@ export function ShopClient({ products }: { products: GroupedProduct[] }) {
         <div className="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
             <ProductCard
-              key={product.id}
+              key={product.baseId}
               product={product}
               onSelect={handleProductSelect}
             />

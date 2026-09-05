@@ -21,32 +21,50 @@ export default async function Page() {
       orderBy: { createdAt: "asc" },
     });
 
-    // Group DB rows by (nome + tenYears) so each product shows as one card
+    // Group DB rows by nome so each product shows as one card
     const groupMap = new Map<string, GroupedProduct>();
 
+    // First pass: create groups and handle base items (tenYears: false)
     for (const item of items) {
-      const images = Array.isArray(item.images)
-        ? (item.images as string[])
-        : [];
-      const key = `${item.nome}::${item.tenYears}`;
+      if (item.tenYears) continue; // Skip tenYears: true for now
+      
+      const images = Array.isArray(item.images) ? (item.images as string[]) : [];
+      const key = item.nome;
 
       if (groupMap.has(key)) {
         const group = groupMap.get(key)!;
         if (item.taglia) {
-          group.variants.push({ taglia: item.taglia, itemId: item.id });
+          group.variants.push({ taglia: item.taglia, baseItemId: item.id, eventItemId: "" });
         }
       } else {
         groupMap.set(key, {
-          id: item.id,
+          baseId: item.id,
+          eventId: "", // Will be filled in second pass
           nome: item.nome,
           description: item.description,
-          tenYears: item.tenYears,
           price: item.price,
+          eventPrice: 0, // Will be filled in second pass
           images,
-          variants: item.taglia
-            ? [{ taglia: item.taglia, itemId: item.id }]
-            : [],
+          variants: item.taglia ? [{ taglia: item.taglia, baseItemId: item.id, eventItemId: "" }] : [],
         });
+      }
+    }
+
+    // Second pass: attach event items (tenYears: true)
+    for (const item of items) {
+      if (!item.tenYears) continue;
+      
+      const key = item.nome;
+      const group = groupMap.get(key);
+      if (group) {
+        group.eventId = item.id;
+        group.eventPrice = item.price;
+        if (item.taglia) {
+          const variant = group.variants.find(v => v.taglia === item.taglia);
+          if (variant) {
+            variant.eventItemId = item.id;
+          }
+        }
       }
     }
 

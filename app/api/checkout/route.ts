@@ -8,7 +8,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export async function POST(req: Request) {
   try {
     const body: CheckoutRequest = await req.json();
-    const { customerName, customerEmail, items } = body;
+    const { customerName, customerEmail, isEventPickup, items } = body;
 
     // --- Input validation ---
     if (
@@ -91,7 +91,7 @@ export async function POST(req: Request) {
       data: {
         nomeCognome: customerName.trim(),
         email: customerEmail.trim().toLowerCase(),
-        shipping: "RITIRO_EVENTO",
+        shipping: isEventPickup ? "RITIRO_EVENTO" : "POST_EVENTO",
         orderItems: {
           create: items.map((item) => ({
             itemId: item.productId,

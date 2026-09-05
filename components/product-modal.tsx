@@ -61,18 +61,22 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
 
       addItem({
         id: Math.random().toString(36).substring(7),
-        productId: variant.itemId,
+        baseProductId: variant.baseItemId,
+        eventProductId: variant.eventItemId,
         name: product.nome,
-        price: product.price,
+        basePrice: product.price,
+        eventPrice: product.eventPrice,
         quantity,
         size: selectedSize,
       });
     } else {
       addItem({
         id: Math.random().toString(36).substring(7),
-        productId: product.id,
+        baseProductId: product.baseId,
+        eventProductId: product.eventId,
         name: product.nome,
-        price: product.price,
+        basePrice: product.price,
+        eventPrice: product.eventPrice,
         quantity,
       });
     }
@@ -105,7 +109,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
 
               {/* Image — callback ref handles cached images where onLoad fires before React attaches */}
               <img
-                key={`${product.id}-${currentImage}`}
+                key={`${product.baseId}-${currentImage}`}
                 ref={(node) => {
                   if (node && node.complete && node.naturalWidth > 0) {
                     handleImageLoaded(currentImage);
@@ -187,7 +191,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                     <div className="flex flex-wrap gap-2">
                       {product.variants.map((v) => (
                         <button
-                          key={v.itemId}
+                          key={v.baseItemId}
                           onClick={() => setSelectedSize(v.taglia)}
                           className={cn(
                             "rounded-md border px-4 py-2 text-sm font-medium transition-colors",
