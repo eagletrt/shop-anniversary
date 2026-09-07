@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { SplashScreenProvider } from "@/components/splash-screen-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 // Metadata configuration for the application
 export const metadata: Metadata = {
@@ -101,6 +102,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
+          <Toaster />
         </SplashScreenProvider>
       </body>
     </html>
