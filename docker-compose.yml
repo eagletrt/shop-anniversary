@@ -1,6 +1,7 @@
 
 services:
   shop:
+    build: .
     image: shop-anniversary:latest
     container_name: shop-anniversary-web
     restart: always
