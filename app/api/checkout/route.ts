@@ -1,6 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import prisma from "@/lib/prisma";
 import type { CheckoutRequest, CheckoutResponse } from "@/lib/types";
+import { sendOrderConfirmationEmail } from "@/lib/email";
 
 // Simple email regex for server-side validation
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -99,6 +100,31 @@ export async function POST(req: Request) {
           })),
         },
       },
+      include: {
+        orderItems: {
+          include: {
+            item: true,
+          },
+        },
+      },
+    });
+
+    // --- Send Email Asynchronously ---
+    after(async () => {
+      const emailData = {
+        orderId: order.id,
+        customerName: order.nomeCognome,
+        customerEmail: order.email,
+        shipping: order.shipping,
+        totalAmount,
+        items: order.orderItems.map((oi) => ({
+          nome: oi.item.nome,
+          taglia: oi.item.taglia,
+          quantity: oi.qty,
+          price: oi.item.price,
+        })),
+      };
+      await sendOrderConfirmationEmail(emailData);
     });
 
     return NextResponse.json(
