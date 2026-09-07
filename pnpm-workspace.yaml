@@ -10,3 +10,10 @@ onlyBuiltDependencies:
   - msgpackr-extract
   - prisma
   - workerd
+supportedArchitectures:
+  os:
+    - linux
+    - darwin
+  cpu:
+    - x64
+    - arm64
