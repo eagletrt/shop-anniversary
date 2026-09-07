@@ -1,8 +1,8 @@
-FROM node:22-alpine AS base
+FROM node:26-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 ENV npm_config_manage_package_manager_versions=false
-RUN corepack enable pnpm
+RUN npm install -g pnpm@latest
 RUN apk add --no-cache openssl
 
 # Install dependencies only when needed

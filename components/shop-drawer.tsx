@@ -10,8 +10,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Trash2, Plus, Minus, CheckCircle2 } from "lucide-react";
-import { toast } from "sonner";
+import { Trash2, Plus, Minus, CheckCircle2, AlertCircle } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -52,10 +51,25 @@ export function ShopDrawer({
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [showErrorDialog, setShowErrorDialog] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email) return;
+
+    if (!name.trim() || name.trim().length < 2) {
+      setErrorMessage("Il nome e cognome deve contenere almeno 2 caratteri.");
+      setShowErrorDialog(true);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.trim() || !emailRegex.test(email)) {
+      setErrorMessage("Per favore, inserisci un indirizzo email valido.");
+      setShowErrorDialog(true);
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -83,10 +97,19 @@ export function ShopDrawer({
         clearCart();
         onClose();
         setShowSuccessDialog(true);
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        setErrorMessage(
+          errorData.error || "Errore sconosciuto durante il checkout."
+        );
+        setShowErrorDialog(true);
       }
     } catch (error) {
       console.error(error);
-      toast.error("Errore durante l'invio del pre-ordine. Riprova.");
+      setErrorMessage(
+        "Errore di connessione durante l'invio del pre-ordine. Riprova."
+      );
+      setShowErrorDialog(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -226,6 +249,7 @@ export function ShopDrawer({
               <div className="min-h-0 flex-1 overflow-y-auto">
                 <form
                   id="checkout-form"
+                  noValidate
                   onSubmit={handleCheckout}
                   className="flex flex-col gap-6 p-6"
                 >
@@ -330,6 +354,31 @@ export function ShopDrawer({
               type="button"
               className="w-full bg-neon font-bold text-black uppercase hover:bg-white hover:text-black"
               onClick={() => setShowSuccessDialog(false)}
+            >
+              Chiudi
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+      <Dialog open={showErrorDialog} onOpenChange={setShowErrorDialog}>
+        <DialogContent className="border-zinc-800 bg-zinc-950 text-white sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-2xl font-black text-red-500 uppercase italic">
+              <AlertCircle className="h-6 w-6" />
+              Attenzione
+            </DialogTitle>
+            <DialogDescription className="text-zinc-400">
+              Dati non validi
+            </DialogDescription>
+          </DialogHeader>
+          <div className="py-6">
+            <p className="text-center text-sm text-zinc-300">{errorMessage}</p>
+          </div>
+          <DialogFooter className="sm:justify-center">
+            <Button
+              type="button"
+              className="w-full bg-red-600 font-bold text-white uppercase hover:bg-red-700 hover:text-white"
+              onClick={() => setShowErrorDialog(false)}
             >
               Chiudi
             </Button>

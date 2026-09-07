@@ -3,13 +3,9 @@ allowBuilds:
   sharp: true
   unrs-resolver: true
   msw: false
-onlyBuiltDependencies:
-  - '@prisma/client'
-  - '@prisma/engines'
-  - esbuild
-  - msgpackr-extract
-  - prisma
-  - workerd
+  '@prisma/engines': true
+  esbuild: true
+  prisma: true
 supportedArchitectures:
   os:
     - linux

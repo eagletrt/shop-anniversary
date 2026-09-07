@@ -34,6 +34,78 @@ export function ProductModal({
   const [quantity, setQuantity] = useState(1);
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
+  // Touch handlers for swipe
+  const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(
+    null
+  );
+  const [touchEnd, setTouchEnd] = useState<{ x: number; y: number } | null>(
+    null
+  );
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    if (e.targetTouches[0]) {
+      setTouchStart({
+        x: e.targetTouches[0].clientX,
+        y: e.targetTouches[0].clientY,
+      });
+    }
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (e.targetTouches[0]) {
+      setTouchEnd({
+        x: e.targetTouches[0].clientX,
+        y: e.targetTouches[0].clientY,
+      });
+    }
+  };
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    setTouchEnd(null);
+    setTouchStart({
+      x: e.clientX,
+      y: e.clientY,
+    });
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (touchStart) {
+      setTouchEnd({
+        x: e.clientX,
+        y: e.clientY,
+      });
+    }
+  };
+
+  const handleSwipeEnd = (e: React.SyntheticEvent) => {
+    if (!touchStart || !touchEnd) return;
+
+    const distanceX = touchStart.x - touchEnd.x;
+    const distanceY = touchStart.y - touchEnd.y;
+
+    const isHorizontalSwipe = Math.abs(distanceX) > Math.abs(distanceY);
+    const isLeftSwipe = isHorizontalSwipe && distanceX > minSwipeDistance;
+    const isRightSwipe = isHorizontalSwipe && distanceX < -minSwipeDistance;
+
+    if (isLeftSwipe || isRightSwipe) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+
+    if (isLeftSwipe) {
+      setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }
+    if (isRightSwipe) {
+      setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    }
+
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   const addItem = useCartStore((state) => state.addItem);
   const setDrawerOpen = useCartStore((state) => state.setDrawerOpen);
   const setDrawerView = useCartStore((state) => state.setDrawerView);
@@ -56,6 +128,24 @@ export function ProductModal({
       return new Set(prev).add(index);
     });
   }, []);
+
+  // Background lazy loading of subsequent images for the modal
+  useEffect(() => {
+    if (isOpen && product?.images && product.images.length > 1) {
+      product.images.forEach((src, index) => {
+        if (index === 0) return; // Primary is already handled
+
+        const img = new window.Image();
+        img.src = src;
+        img.onload = () => {
+          setLoadedImages((prev) => {
+            if (prev.has(index)) return prev;
+            return new Set(prev).add(index);
+          });
+        };
+      });
+    }
+  }, [isOpen, product]);
 
   const hasSizes = product?.variants && product.variants.length > 0;
 
@@ -117,7 +207,16 @@ export function ProductModal({
         {product ? (
           <div className="flex max-h-[90vh] flex-col overflow-y-auto md:flex-row md:overflow-hidden">
             {/* Image area */}
-            <div className="relative aspect-4/5 max-h-[60vh] w-full shrink-0 overflow-hidden bg-zinc-900 md:max-h-none md:w-1/2">
+            <div
+              className="relative aspect-4/5 max-h-[60vh] w-full shrink-0 overflow-hidden bg-zinc-900 select-none md:max-h-none md:w-1/2"
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={handleSwipeEnd}
+              onMouseDown={onMouseDown}
+              onMouseMove={onMouseMove}
+              onMouseUp={handleSwipeEnd}
+              onMouseLeave={handleSwipeEnd}
+            >
               {/* Skeleton */}
               <div
                 className={`absolute inset-0 z-5 bg-zinc-800 transition-opacity duration-300 ${
@@ -157,6 +256,7 @@ export function ProductModal({
                           ? "cursor-grab active:cursor-grabbing"
                           : "cursor-zoom-in"
                       )}
+                      draggable={false}
                       onClick={() => {
                         if (state.scale === 1) {
                           zoomIn();

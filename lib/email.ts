@@ -58,9 +58,9 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData) {
     const logoTopPath = path.join(
       process.cwd(),
       "public",
-      "logo_horizontal_dark.svg"
+      "logo_horizontal_dark.png"
     );
-    const logoBottomPath = path.join(process.cwd(), "public", "logo_dark.svg");
+    const logoBottomPath = path.join(process.cwd(), "public", "logo_dark.png");
     const logoTopCid = "eagletrt-logo-top@shop";
     const logoBottomCid = "eagletrt-logo-bottom@shop";
 
@@ -191,16 +191,16 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData) {
       `,
       attachments: [
         {
-          filename: "logo_horizontal_dark.svg",
+          filename: "logo_horizontal_dark.png",
           path: logoTopPath,
           cid: logoTopCid,
-          contentType: "image/svg+xml",
+          contentType: "image/png",
         },
         {
-          filename: "logo_dark.svg",
+          filename: "logo_dark.png",
           path: logoBottomPath,
           cid: logoBottomCid,
-          contentType: "image/svg+xml",
+          contentType: "image/png",
         },
       ],
     };

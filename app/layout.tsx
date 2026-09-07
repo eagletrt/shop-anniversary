@@ -51,7 +51,16 @@ export const metadata: Metadata = {
     },
   },
   title: "E-AgleTRT Anniversary Shop", // Title of the site
-  description: "Web application for managing anniversary shop", // Description of the site
+  description:
+    "Esplora lo shop ufficiale di E-AgleTRT per il decimo anniversario! Scopri il merchandising esclusivo e celebra con noi 10 anni di passione e motorsport.", // Description of the site
+  openGraph: {
+    title: "E-AgleTRT Anniversary Shop",
+    description:
+      "Esplora lo shop ufficiale di E-AgleTRT per il decimo anniversario! Scopri il merchandising esclusivo e celebra con noi 10 anni di passione e motorsport.",
+    type: "website",
+    locale: "it_IT",
+    siteName: "E-AgleTRT Anniversary Shop",
+  },
   icons: {
     // Icons configuration
     icon: [
@@ -91,7 +100,8 @@ export default function RootLayout({
     <html
       lang="it"
       suppressHydrationWarning
-      className={`${inter.variable} data-scroll-behavior="smooth" scroll-smooth`}
+      className={`${inter.variable} scroll-smooth`}
+      data-scroll-behavior="smooth"
     >
       <body>
         <SplashScreenProvider>

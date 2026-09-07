@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { SkeletonImage } from "@/components/skeleton-image";
 
 export const metadata = {
   title: "Guida alle Taglie - Felpa",
@@ -77,15 +77,8 @@ export default function HoodieSizeGuidePage() {
         </div>
 
         <div className="flex flex-col items-center justify-center space-y-6 pt-8 lg:pt-16">
-          <div className="relative aspect-square w-full md:max-w-lg lg:max-w-none">
-            <Image
-              src="/Felpa_size.webp"
-              alt="Felpa"
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-contain"
-              priority
-            />
+          <div className="relative aspect-square w-full overflow-hidden rounded-xl md:max-w-lg lg:max-w-none">
+            <SkeletonImage src="/Felpa_size.webp" alt="Felpa" />
           </div>
         </div>
       </div>

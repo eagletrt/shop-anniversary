@@ -24,6 +24,10 @@ export function ShopClient({
   );
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
 
+  // Track how many primary images have loaded
+  const [loadedPrimaryCount, setLoadedPrimaryCount] = useState(0);
+  const allPrimaryLoaded = loadedPrimaryCount >= products.length;
+
   const handleProductSelect = (product: GroupedProduct) => {
     setSelectedProduct(product);
     setIsProductModalOpen(true);
@@ -50,6 +54,8 @@ export function ShopClient({
               product={product}
               onSelect={handleProductSelect}
               isInternal={isInternal}
+              allPrimaryLoaded={allPrimaryLoaded}
+              onPrimaryLoad={() => setLoadedPrimaryCount((prev) => prev + 1)}
             />
           ))}
         </div>
