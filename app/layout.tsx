@@ -27,10 +27,6 @@ export const metadata: Metadata = {
     "Merchandise",
     "E-AgleTRT Shop",
   ],
-  authors: [
-    { name: "Marco Bassi", url: "mailto:marco.bassi-2@eagletrt.it" },
-    { name: "Matteo Benini", url: "mailto:matteo.benini@eagletrt.it" },
-  ], // Author information
   formatDetection: {
     email: false, // Disable email detection
     address: false, // Disable address detection

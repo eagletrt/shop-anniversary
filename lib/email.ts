@@ -103,10 +103,10 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData) {
           </style>
         </head>
         <body style="margin: 0; padding: 0; background-color: #171717; color: #fafafa; font-family: sans-serif; line-height: 1.6;">
-          <div style="background-color: #171717; width: 100%; min-height: 100vh; padding-top: 40px; padding-bottom: 40px;">
+          <div style="background-color: #171717;">
             
             <!-- Main Card -->
-            <div style="max-width: 600px; margin: 0 auto; background-color: #292929; border-radius: 26px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <div style="margin: 0 auto; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
               
               <!-- Header -->
               <div style="text-align: center; padding: 40px 20px; background-color: #171717; border-bottom: 1px solid rgba(255,255,255,0.14);">
@@ -141,7 +141,7 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData) {
               </div>
               
               <!-- Footer resembling the website footer -->
-              <div style="background-color: #292929; border-top: 1px solid rgba(255,255,255,0.14); border-radius: 26px 26px 0 0; margin-top: 20px; padding: 30px 20px; font-size: 14px; color: #a3a3a3;">
+              <div style="background-color: #292929; border-top: 1px solid rgba(255,255,255,0.14); border-radius: 26px 26px 0px 0px; margin-top: 20px; padding: 30px 20px; font-size: 14px; color: #a3a3a3;">
                 
                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
                   <tr>
