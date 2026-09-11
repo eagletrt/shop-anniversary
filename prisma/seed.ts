@@ -16,7 +16,7 @@ async function main() {
     // -- FELPA --
     {
       nome: "Felpa",
-      price: 50.0,
+      price: 45.0,
       description: "Ricamo davanti (logo) mentre dietro stampa.",
       tenYears: true,
       images: ["/images/Felpa_front.webp", "/images/Felpa_back.webp"],
@@ -24,7 +24,7 @@ async function main() {
     },
     {
       nome: "Felpa",
-      price: 50.0,
+      price: 45.0,
       description: "Ricamo davanti (logo) mentre dietro stampa.",
       tenYears: true,
       images: ["/images/Felpa_front.webp", "/images/Felpa_back.webp"],
@@ -32,7 +32,7 @@ async function main() {
     },
     {
       nome: "Felpa",
-      price: 50.0,
+      price: 45.0,
       description: "Ricamo davanti (logo) mentre dietro stampa.",
       tenYears: true,
       images: ["/images/Felpa_front.webp", "/images/Felpa_back.webp"],
@@ -40,7 +40,7 @@ async function main() {
     },
     {
       nome: "Felpa",
-      price: 50.0,
+      price: 45.0,
       description: "Ricamo davanti (logo) mentre dietro stampa.",
       tenYears: true,
       images: ["/images/Felpa_front.webp", "/images/Felpa_back.webp"],
@@ -48,7 +48,7 @@ async function main() {
     },
     {
       nome: "Felpa",
-      price: 50.0,
+      price: 45.0,
       description: "Ricamo davanti (logo) mentre dietro stampa.",
       tenYears: true,
       images: ["/images/Felpa_front.webp", "/images/Felpa_back.webp"],
@@ -56,7 +56,7 @@ async function main() {
     },
     {
       nome: "Felpa",
-      price: 50.0,
+      price: 45.0,
       description: "Ricamo davanti (logo) mentre dietro stampa.",
       tenYears: true,
       images: ["/images/Felpa_front.webp", "/images/Felpa_back.webp"],
@@ -64,7 +64,7 @@ async function main() {
     },
     {
       nome: "Felpa",
-      price: 50.0,
+      price: 45.0,
       description: "Ricamo davanti (logo) mentre dietro stampa.",
       tenYears: true,
       images: ["/images/Felpa_front.webp", "/images/Felpa_back.webp"],
@@ -72,7 +72,7 @@ async function main() {
     },
     {
       nome: "Felpa",
-      price: 50.0,
+      price: 45.0,
       description: "Ricamo davanti (logo) mentre dietro stampa.",
       tenYears: true,
       images: ["/images/Felpa_front.webp", "/images/Felpa_back.webp"],
@@ -80,7 +80,7 @@ async function main() {
     },
     {
       nome: "Felpa",
-      price: 50.0,
+      price: 45.0,
       description: "Ricamo davanti (logo) mentre dietro stampa.",
       tenYears: true,
       images: ["/images/Felpa_front.webp", "/images/Felpa_back.webp"],
@@ -88,7 +88,7 @@ async function main() {
     },
     {
       nome: "Felpa",
-      price: 50.0,
+      price: 45.0,
       description: "Ricamo davanti (logo) mentre dietro stampa.",
       tenYears: true,
       images: ["/images/Felpa_front.webp", "/images/Felpa_back.webp"],
@@ -98,7 +98,7 @@ async function main() {
     // -- MAGLIA --
     {
       nome: "Maglia",
-      price: 30.0,
+      price: 20.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: true,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -106,7 +106,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 30.0,
+      price: 20.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: true,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -114,7 +114,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 30.0,
+      price: 20.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: true,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -122,7 +122,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 30.0,
+      price: 20.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: true,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -130,7 +130,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 30.0,
+      price: 20.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: true,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -138,7 +138,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 30.0,
+      price: 20.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: true,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -146,7 +146,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 30.0,
+      price: 20.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: true,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -154,7 +154,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 30.0,
+      price: 20.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: true,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -162,7 +162,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 30.0,
+      price: 20.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: true,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -170,7 +170,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 30.0,
+      price: 20.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: true,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -180,7 +180,7 @@ async function main() {
     // -- ACCESSORI EVENTO (Taglia null) --
     {
       nome: "Cappellino",
-      price: 20.0,
+      price: 15.0,
       description: "Ricamo davanti mentre stampa ai lati.",
       tenYears: true,
       images: [
@@ -192,7 +192,7 @@ async function main() {
     },
     {
       nome: "Portachiavi RBR",
-      price: 7.0,
+      price: 6.0,
       description: "Remove before race ricamato, mentre il logo stampato.",
       tenYears: true,
       images: ["/images/Portachiavi_RBR.png"],
@@ -200,15 +200,15 @@ async function main() {
     },
     {
       nome: "Tote Bag",
-      price: 12.0,
+      price: 8.0,
       description: "Stampata da un solo lato.",
       tenYears: true,
-      images: ["/images/tote-bag.webp"],
+      images: ["/images/tote-bag.png"],
       taglia: null,
     },
     {
       nome: "Tappetini",
-      price: 7.0,
+      price: 6.0,
       description: "Stampato con la grafica in immagine.",
       tenYears: true,
       images: ["/images/MousePad.png"],
@@ -216,13 +216,13 @@ async function main() {
     },
     {
       nome: "Starter Pack",
-      price: 20.0,
+      price: 18.0,
       description: "Include: Portachiavi RBR, Tote Bag, Tappetino.",
       tenYears: true,
       images: [
         "/images/Starter_pack.webp",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: null,
@@ -231,7 +231,7 @@ async function main() {
     // -- PRO PACK EVENTO --
     {
       nome: "Pro Pack",
-      price: 60.0,
+      price: 45.0,
       description:
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -240,13 +240,13 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "XXS",
     },
     {
       nome: "Pro Pack",
-      price: 60.0,
+      price: 45.0,
       description:
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -255,13 +255,13 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "XS",
     },
     {
       nome: "Pro Pack",
-      price: 60.0,
+      price: 45.0,
       description:
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -270,13 +270,13 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "S",
     },
     {
       nome: "Pro Pack",
-      price: 60.0,
+      price: 45.0,
       description:
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -285,13 +285,13 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "M",
     },
     {
       nome: "Pro Pack",
-      price: 60.0,
+      price: 45.0,
       description:
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -300,13 +300,13 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "L",
     },
     {
       nome: "Pro Pack",
-      price: 60.0,
+      price: 45.0,
       description:
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -315,13 +315,13 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "XL",
     },
     {
       nome: "Pro Pack",
-      price: 60.0,
+      price: 45.0,
       description:
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -330,13 +330,13 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "2XL",
     },
     {
       nome: "Pro Pack",
-      price: 60.0,
+      price: 45.0,
       description:
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -345,13 +345,13 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "3XL",
     },
     {
       nome: "Pro Pack",
-      price: 60.0,
+      price: 45.0,
       description:
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -360,13 +360,13 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "4XL",
     },
     {
       nome: "Pro Pack",
-      price: 60.0,
+      price: 45.0,
       description:
         "Include: Maglia, Cappellino, Portachiavi RBR, Tote Bag. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -375,7 +375,7 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "5XL",
     },
@@ -383,7 +383,7 @@ async function main() {
     // -- VIP PACK EVENTO --
     {
       nome: "VIP Pack",
-      price: 110.0,
+      price: 90.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -393,14 +393,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "XXS",
     },
     {
       nome: "VIP Pack",
-      price: 110.0,
+      price: 90.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -410,14 +410,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "XS",
     },
     {
       nome: "VIP Pack",
-      price: 110.0,
+      price: 90.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -427,14 +427,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "S",
     },
     {
       nome: "VIP Pack",
-      price: 110.0,
+      price: 90.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -444,14 +444,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "M",
     },
     {
       nome: "VIP Pack",
-      price: 110.0,
+      price: 90.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -461,14 +461,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "L",
     },
     {
       nome: "VIP Pack",
-      price: 110.0,
+      price: 90.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -478,14 +478,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "XL",
     },
     {
       nome: "VIP Pack",
-      price: 110.0,
+      price: 90.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -495,14 +495,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "2XL",
     },
     {
       nome: "VIP Pack",
-      price: 110.0,
+      price: 90.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -512,14 +512,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "3XL",
     },
     {
       nome: "VIP Pack",
-      price: 110.0,
+      price: 90.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -529,14 +529,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "4XL",
     },
     {
       nome: "VIP Pack",
-      price: 110.0,
+      price: 90.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: true,
@@ -546,7 +546,7 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "5XL",
@@ -641,7 +641,7 @@ async function main() {
     // -- MAGLIA MEMBRI --
     {
       nome: "Maglia",
-      price: 20.0,
+      price: 18.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: false,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -649,7 +649,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 20.0,
+      price: 18.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: false,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -657,7 +657,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 20.0,
+      price: 18.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: false,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -665,7 +665,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 20.0,
+      price: 18.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: false,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -673,7 +673,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 20.0,
+      price: 18.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: false,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -681,7 +681,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 20.0,
+      price: 18.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: false,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -689,7 +689,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 20.0,
+      price: 18.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: false,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -697,7 +697,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 20.0,
+      price: 18.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: false,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -705,7 +705,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 20.0,
+      price: 18.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: false,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -713,7 +713,7 @@ async function main() {
     },
     {
       nome: "Maglia",
-      price: 20.0,
+      price: 18.0,
       description: "Stampa sia davanti che dietro.",
       tenYears: false,
       images: ["/images/T-Shirt_front.png", "/images/T-Shirt_back.png"],
@@ -723,7 +723,7 @@ async function main() {
     // -- ACCESSORI MEMBRI (Taglia null) --
     {
       nome: "Cappellino",
-      price: 15.0,
+      price: 14.0,
       description: "Ricamo davanti mentre stampa ai lati.",
       tenYears: false,
       images: [
@@ -743,10 +743,10 @@ async function main() {
     },
     {
       nome: "Tote Bag",
-      price: 10.0,
+      price: 7.0,
       description: "Stampata da un solo lato.",
       tenYears: false,
-      images: ["/images/tote-bag.webp"],
+      images: ["/images/tote-bag.png"],
       taglia: null,
     },
     {
@@ -765,7 +765,7 @@ async function main() {
       images: [
         "/images/Starter_pack.webp",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: null,
@@ -783,7 +783,7 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "XXS",
     },
@@ -798,7 +798,7 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "XS",
     },
@@ -813,7 +813,7 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "S",
     },
@@ -828,7 +828,7 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "M",
     },
@@ -843,7 +843,7 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "L",
     },
@@ -858,7 +858,7 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "XL",
     },
@@ -873,7 +873,7 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "2XL",
     },
@@ -888,7 +888,7 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "3XL",
     },
@@ -903,7 +903,7 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "4XL",
     },
@@ -918,7 +918,7 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
       ],
       taglia: "5XL",
     },
@@ -926,7 +926,7 @@ async function main() {
     // -- VIP PACK MEMBRI --
     {
       nome: "VIP Pack",
-      price: 70.0,
+      price: 80.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
@@ -936,14 +936,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "XXS",
     },
     {
       nome: "VIP Pack",
-      price: 70.0,
+      price: 80.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
@@ -953,14 +953,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "XS",
     },
     {
       nome: "VIP Pack",
-      price: 70.0,
+      price: 80.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
@@ -970,14 +970,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "S",
     },
     {
       nome: "VIP Pack",
-      price: 70.0,
+      price: 80.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
@@ -987,14 +987,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "M",
     },
     {
       nome: "VIP Pack",
-      price: 70.0,
+      price: 80.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
@@ -1004,14 +1004,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "L",
     },
     {
       nome: "VIP Pack",
-      price: 70.0,
+      price: 80.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
@@ -1021,14 +1021,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "XL",
     },
     {
       nome: "VIP Pack",
-      price: 70.0,
+      price: 80.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
@@ -1038,14 +1038,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "2XL",
     },
     {
       nome: "VIP Pack",
-      price: 70.0,
+      price: 80.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
@@ -1055,14 +1055,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "3XL",
     },
     {
       nome: "VIP Pack",
-      price: 70.0,
+      price: 80.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
@@ -1072,14 +1072,14 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "4XL",
     },
     {
       nome: "VIP Pack",
-      price: 70.0,
+      price: 80.0,
       description:
         "Include: Felpa, Maglia, Cappellino, Portachiavi RBR, Tote Bag, Tappetino. (Nota: se hai taglie diverse tra i capi, scrivilo nelle note dell'ordine).",
       tenYears: false,
@@ -1089,7 +1089,7 @@ async function main() {
         "/images/T-Shirt_front.png",
         "/images/cap_front.png",
         "/images/Portachiavi_RBR.png",
-        "/images/tote-bag.webp",
+        "/images/tote-bag.png",
         "/images/MousePad.png",
       ],
       taglia: "5XL",
