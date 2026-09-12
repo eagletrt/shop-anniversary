@@ -110,7 +110,7 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData) {
               
               <!-- Header -->
               <div style="text-align: center; padding: 40px 20px; background-color: #171717; border-bottom: 1px solid rgba(255,255,255,0.14);">
-                <img src="cid:${logoTopCid}" alt="EagleTRT Logo" style="width: 250px; height: auto; display: inline-block; border: none; outline: none; background: transparent;" />
+                <img src="cid:${logoTopCid}" alt="E-Agle TRT Logo" style="width: 250px; height: auto; display: inline-block; border: none; outline: none; background: transparent;" />
                 <h1 style="color: #f3ff14; margin: 25px 0 0 0; font-size: 24px;">Grazie per il tuo pre-ordine, ${data.customerName}!</h1>
               </div>
 

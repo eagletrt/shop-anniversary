@@ -1,10 +1,10 @@
 {
-    "name": "E-AgleTRT Anniversary Shop",
-    "short_name": "E-AgleTRT Anniversary Shop",
+    "name": "E-Agle TRT Anniversary Shop",
+    "short_name": "E-Agle TRT Anniversary Shop",
     "description": "Sito web per la vendita di prodotti in occasione del decimo anniversario del team",
     "start_url": "/",
     "display": "standalone",
-    "id": "it.eagletrt.shop",
+    "id": "it.eagletrt.merch",
     "icons": [
         { "src": "./icon-192.png", "type": "image/png", "sizes": "192x192" },
         { "src": "./icon-mask.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" },

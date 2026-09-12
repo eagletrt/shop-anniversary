@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = "https://shop.eagletrt.it";
+  const siteUrl = "https://merch.eagletrt.it";
 
   return [
     {
