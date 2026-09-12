@@ -2,6 +2,7 @@ FROM node:26-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 ENV npm_config_manage_package_manager_versions=false
+ARG ENV_FILE=.env
 RUN npm install -g pnpm@latest
 RUN apk add --no-cache openssl
 
@@ -22,6 +23,9 @@ WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
+# Custom env file
+COPY ${ENV_FILE} .env
 
 # Generate Prisma client
 RUN pnpm prisma generate
