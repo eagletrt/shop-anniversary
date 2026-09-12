@@ -9,11 +9,11 @@ import { Toaster } from "@/components/ui/sonner";
 // Metadata configuration for the application
 export const metadata: Metadata = {
   generator: "Next.js", // Generator of the site
-  applicationName: "E-AgleTRT Anniversary Shop", // Name of the application
+  applicationName: "E-Agle TRT Anniversary Shop", // Name of the application
   referrer: "strict-origin", // Referrer policy
   keywords: [
     // Keywords for SEO
-    "E-AgleTRT",
+    "E-Agle TRT",
     "Anniversary",
     "Shop",
     "Formula Student",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "Automotive",
     "Student Project",
     "Merchandise",
-    "E-AgleTRT Shop",
+    "E-Agle TRT Shop",
   ],
   formatDetection: {
     email: false, // Disable email detection
@@ -46,16 +46,16 @@ export const metadata: Metadata = {
       "max-snippet": 1, // Maximum snippet length
     },
   },
-  title: "E-AgleTRT Anniversary Shop", // Title of the site
+  title: "E-Agle TRT Anniversary Shop", // Title of the site
   description:
-    "Esplora lo shop ufficiale di E-AgleTRT per il decimo anniversario! Scopri il merchandising esclusivo e celebra con noi 10 anni di passione e motorsport.", // Description of the site
+    "Esplora lo shop ufficiale di E-Agle TRT per il decimo anniversario! Scopri il merchandising esclusivo e celebra con noi 10 anni di passione e motorsport.", // Description of the site
   openGraph: {
-    title: "E-AgleTRT Anniversary Shop",
+    title: "E-Agle TRT Anniversary Shop",
     description:
-      "Esplora lo shop ufficiale di E-AgleTRT per il decimo anniversario! Scopri il merchandising esclusivo e celebra con noi 10 anni di passione e motorsport.",
+      "Esplora lo shop ufficiale di E-Agle TRT per il decimo anniversario! Scopri il merchandising esclusivo e celebra con noi 10 anni di passione e motorsport.",
     type: "website",
     locale: "it_IT",
-    siteName: "E-AgleTRT Anniversary Shop",
+    siteName: "E-Agle TRT Anniversary Shop",
   },
   icons: {
     // Icons configuration

@@ -41,7 +41,7 @@ export function ShopClient({
             Official <span className="text-primary">Equipment</span>
           </h1>
           <p className="mx-auto max-w-2xl font-mono text-sm text-muted-foreground md:text-base">
-            Equipaggiamento ufficiale E-AGLE Trento Racing Team
+            Equipaggiamento ufficiale E-Agle Trento Racing Team
             <br />
             Qualità ingegneristica e stile per veri appassionati
           </p>
