@@ -144,7 +144,7 @@ export function ShopDrawer({
                     className="mt-4 text-neon"
                     onClick={onClose}
                   >
-                    Continua gli acquisti
+                    Continua con il pre-ordine
                   </Button>
                 </div>
               ) : (
@@ -256,12 +256,12 @@ export function ShopDrawer({
                   <div className="mb-2 rounded-lg border border-zinc-800 bg-zinc-900/50 p-4">
                     <h4 className="mb-2 flex items-center gap-2 text-sm font-bold text-red-400 uppercase">
                       <span className="h-2 w-2 animate-pulse rounded-full bg-red-500"></span>
-                      Attenzione - Raccolta Fondi
+                      Attenzione
                     </h4>
                     <p className="text-sm leading-relaxed text-zinc-300">
                       Questo è un{" "}
-                      <strong className="text-white">pre-ordine</strong> per una
-                      raccolta fondi. Il pagamento{" "}
+                      <strong className="text-white">pre-ordine</strong>.
+                      Il pagamento{" "}
                       <strong className="text-white">NON</strong> avviene
                       online. Ti contatteremo per organizzare il pagamento
                       (Contanti, PayPal, o Bonifico) e la consegna.
